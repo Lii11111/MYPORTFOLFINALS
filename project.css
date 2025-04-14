@@ -1,0 +1,492 @@
+.t1 h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: #443627;
+  font-weight: -10;
+  font-size: 2rem;
+  margin-bottom: 50px;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  top: -vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: white;
+}
+
+.slider-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* Top/Bottom: 0, Left/Right: Auto */
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease;
+}
+
+.slider-item {
+  flex: 0 0 200px;
+  height: auto;
+  background: maroon;
+  border-radius: 10px;
+  display: flex; /* Added */
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  padding: 10px; /* Adds breathing room */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+  margin-bottom: 20px; /* Space for shadow to show */
+  position: relative; /* Ensures shadow stays behind */
+  z-index: 1; /* Prevents shadow clipping */
+  background: white;
+}
+.slider-track {
+  padding-bottom: 30px;
+}
+
+/* Center item is larger */
+.slider-item.active {
+  transform: scale(1.2);
+  z-index: 2;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Side items are smaller */
+.slider-item:not(.active) {
+  transform: scale(0.9);
+  filter: blur(5px);
+}
+
+.slider-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Shows entire image without cropping */
+  object-position: center;
+  background: #f5f5f5;
+}
+
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.slider-nav button {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 3;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: auto;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ccc;
+}
+
+.prototype p {
+  display: flex;
+  align-items: center;
+  margin: 0 20vw;
+  font-family: "Poppins", sans-serif;
+  font-weight: 250;
+  text-align: center;
+  line-height: 1.6;
+  padding-bottom: 6vh;
+}
+/*----------------------------------------- PROJECT SECTION PART -------------------------------*/
+#proj1 {
+  height: auto;
+  background-color: black;
+}
+body {
+  margin: 0;
+}
+.gridproj {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+}
+.desc1 {
+  position: relative;
+  top: 4vh;
+}
+.desc1 h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: gray;
+  font-weight: 600;
+}
+.desc1 h5 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: gray;
+  font-weight: 400;
+  text-align: justify;
+  margin-right: 2vw;
+}
+
+.desc2 video {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+}
+.video-label {
+  font-weight: 300;
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-bottom: 10px;
+  color: gray;
+  font-family: "Poppins", sans-serif;
+}
+/* Container */
+#login-slider-section {
+  background-color: black;
+  padding: 40px 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-slider-container {
+  position: relative;
+  left: 15vw;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+
+  align-items: center;
+}
+
+.login-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
+  padding: 0 60px; /* Prevent buttons from overlapping */
+}
+
+.login-slide.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.desc3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.desc3 img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.desc4 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.desc4 h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  color: gray;
+  font-weight: 600;
+}
+
+.desc4 h5 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: gray;
+  font-weight: 400;
+  text-align: justify;
+  margin-top: 10px;
+}
+
+/* Navigation Buttons */
+.login-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: gray;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.login-prev {
+  left: 10px;
+}
+
+.login-next {
+  right: 10px;
+}
+
+.login-nav-btn:hover {
+  background: #555;
+}
+
+/* Responsive */
+
+/*----------------------------------------- RESPONSIVES PART -------------------------------*/
+@media (max-width: 768px) {
+  .t1 h1 {
+    font-size: 1.3rem;
+  }
+
+  .prototype p {
+    display: flex;
+    align-items: center;
+    margin: 0 5vw;
+    font-family: "Poppins", sans-serif;
+    font-weight: 250;
+    text-align: center;
+    line-height: 1.6;
+    padding-bottom: 6vh;
+    font-size: 0.8rem;
+  }
+  .gridproj {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .desc1 h5 {
+    margin-right: 0; /* removes side spacing on mobile */
+    padding: 0 10px;
+  }
+  .desc1 ul li {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: gray;
+    font-weight: 400;
+
+    margin-right: 2vw;
+    text-align: left;
+  }
+
+  .desc2 {
+    margin-top: 20px;
+  }
+  .gridproj {
+    margin-right: 1vw;
+  }
+  .desc4 h5 {
+    margin-right: 0; /* removes side spacing on mobile */
+    padding: 0 10px;
+  }
+  .desc3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .desc3 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .login-slide {
+    padding: 0 20px;
+  }
+
+  .desc4 h5 {
+    margin: 0;
+  }
+}
+@media (max-width: 1024px) {
+  .login-slide {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  #login-slider-section {
+    padding: 20px 10px;
+  }
+
+  .login-slider-container {
+    left: 0; /* Remove manual offset */
+    padding: 0 10px;
+  }
+
+  .login-slide {
+    padding: 0 20px;
+  }
+
+  .desc4 h2 {
+    font-size: 1.3rem;
+  }
+
+  .desc4 h5 {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .login-nav-btn {
+    padding: 8px 12px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .desc4 h2 {
+    font-size: 1.1rem;
+  }
+
+  .desc4 h5 {
+    font-size: 0.9rem;
+    padding: 0 5px;
+  }
+
+  .login-nav-btn {
+    padding: 6px 10px;
+    font-size: 1rem;
+  }
+}
+
+/* Tablet screens like iPad Air */
+@media (max-width: 900px) {
+  .login-slider-container {
+    max-width: 90%;
+    left: 0;
+    padding: 0 20px;
+    flex-direction: column;
+  }
+
+  .login-slide {
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .desc3 img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+
+  .desc4 {
+    margin-top: 15px;
+    padding: 0 10px;
+  }
+
+  .desc4 h2 {
+    font-size: 1.3rem;
+  }
+
+  .desc4 h5 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .login-nav-btn {
+    top: 45%;
+    font-size: 1.2rem;
+    padding: 8px 12px;
+  }
+}
+
+/* For smaller tablets and phones */
+@media (max-width: 600px) {
+  .login-slide {
+    padding: 0 5px;
+  }
+
+  .desc4 h2 {
+    font-size: 1.1rem;
+  }
+
+  .desc4 h5 {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  .login-nav-btn {
+    font-size: 1rem;
+    padding: 6px 10px;
+  }
+}

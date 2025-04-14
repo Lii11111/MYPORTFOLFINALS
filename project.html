@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects</title>
+    <link rel="icon" type="image/png" href="logo__1_-removebg-preview.png" />
+    <link rel="stylesheet" href="project.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    </style>
+  </head>
+  <body>
+    <div class="t1">
+      <h1>
+        Pool Table Time Management System With Locking Integration using Arduino
+        (Capstone Project)
+      </h1>
+      <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
+            <!-- Duplicate last item at beginning for infinite loop -->
+            
+            <!-- Actual items -->
+            <div class="slider-item">
+                <img src="image (2).png" alt="Image 3">
+            </div>
+            
+            <!-- Original images -->
+            <div class="slider-item">
+                <img src="image.png" alt="Image 1">
+            </div>
+            <div class="slider-item">
+                <img src="image (1).png" alt="Image 2">
+            </div>
+            <div class="slider-item active">
+                <img src="image (2).png" alt="Image 3">
+            </div>
+            
+            <!-- Clone of first image (for seamless looping) -->
+            <div class="slider-item">
+                <img src="image.png" alt="Image 1">
+            </div>
+            <!-- Duplicate first item at end for infinite loop -->
+           
+        </div>
+        
+        <div class="slider-nav">
+            <button id="prevBtn">❮</button>
+            <button id="nextBtn">❯</button>
+        </div>
+    </div>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+      </div>
+      <div class="prototype">
+        <p>The project prototype features a self-built wooden pool table designed to simulate an automated lock system with time and pricing management. This table includes six pocket holes equipped with servo motors that automatically lock once a player's allotted time ends. The system integrates hardware and software components, where an Arduino microcontroller connects the physical table with a Windows Forms application. The application manages session time, calculates pricing, and sends signals to the Arduino to trigger servo motor actions. A PC or laptop runs the application, enabling real-time control and monitoring of the table’s operational status.
+            <br>
+            <br>
+          On the software side, the project uses a Windows Forms application developed in C#. Each pool table is represented through a DataGridView, showing remaining time and corresponding prices. Admin staff can add time, view history, and generate earnings reports through various built-in features. Data management is handled using Firebase, which stores session histories and earnings in real time. The system is designed around three key components: the software interface, the hardware (table with Arduino and servo motors), and the cloud-based database for history tracking and report generation.</p>
+      </div>
+    
+<!---------------------------------------SECTION PART-------------------------->
+<section id="proj1">
+  <div class="gridproj">
+    <!----------- 1st Column------------->
+    <div class="desc1">
+      <h2>Project Overview</h2>
+     <h5>
+        
+        
+        <br>
+        In this project, our client owns a pool table shop that accommodates multiple players daily. To improve efficiency and streamline operations, we developed a system where the pocket holes of the pool table automatically lock using servo motors once a player's time has ended. This automation helps the client manage sessions more effectively and reduces the need for constant manual monitoring.
+       <br>
+       <br>
+      <b> Tech Skills Gained : </b>
+      
+        <ul>
+        <li>C#</li>
+        <li>C++</li>
+        <li>Firebase (Database)</li>
+        <li>Microsoft Visual Studio 2022</li>
+        <li>Arduino Programming (using Arduino IDE)</li>
+        <li>Serial Communication between Arduino and PC</li>
+        
+      </ul>
+      </h5>
+    </div>
+    <div class="desc2">
+      <p class="video-label">How the project works:</p>
+      <video autoplay loop muted playsinline>
+        <source src="capstonevid.mp4" typ e="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+    <!----------- 2nd Column------------->
+    
+    <div class="login-slider-container" id="loginSlider">
+      <div class="login-slide active">s
+        <div class="desc3">
+          <p class="img1">Demo:</p>
+          <img src="image.png" alt="Login Screenshot" />
+        </div>
+        <div class="desc4">
+          <h2>Login Page</h2>
+          <h5>
+            This is the login page designed exclusively for the shop owner or administrator. 
+            Once the owner enters valid credentials, they are redirected to the main dashboard 
+            of the desktop application. This page is restricted to administrative access only 
+            and is not intended for players or public use.
+          </h5>
+        </div>
+      </div>
+  
+      <div class="login-slide">
+        <div class="desc3">
+          <p class="img1">Demo 2:</p>
+          <img src="image (1).png" alt="Another Screenshot" />
+        </div>
+        <div class="desc4">
+          <h2>Another Feature</h2>
+          <h5>
+            This is another example feature you want to show off. You can describe it here. 
+            Add as many slides as you'd like.
+          </h5>
+        </div>
+      </div>
+  
+      <!-- Navigation Buttons -->
+      <button class="login-nav-btn login-prev">❮</button>
+      <button class="login-nav-btn login-next">❯</button>
+    </div>
+    
+    
+  
+ 
+</section>
+    <script src="script.js"></script>
+  </body>
+</html>

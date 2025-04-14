@@ -1,0 +1,983 @@
+body,
+html {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+body {
+  overflow: hidden;
+}
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+/*--------------------------------ROOOOOOOT------------------------------*/
+:root {
+  --primary: #3d0301;
+  --secondary: white;
+  --fontfam: "Poppins", sans-serif;
+}
+
+.logo {
+  display: flex;
+  height: 19vh;
+  width: auto;
+  justify-content: flex-start;
+  position: relative;
+  top: -5vh;
+  left: 2vw;
+  z-index: 1;
+}
+/*--------------------------------NAVIGATION PART-------------------------------*/
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: 3px 10px;
+  padding-bottom: 0;
+  z-index: 1000;
+
+  margin: 0;
+}
+
+nav ul li {
+  padding: 0 10px 0 10px;
+}
+
+nav ul li a {
+  font-family: "Manrope", sans-serif;
+  display: inline-block;
+  padding: 1vw;
+  background-color: transparent;
+  text-decoration: none;
+  position: relative;
+  color: black;
+  font-size: 1.2vw;
+  font-weight: 430;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 3px;
+  background-color: #7d0a0a;
+  transform: scaleX(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+nav ul li a:hover::after {
+  transform: scaleX(0.6);
+}
+
+/*--------------------------------SECTION PART (ABOUT ME)-------------------------------*/
+
+#about {
+  height: 100vh;
+  margin-bottom: 25px;
+}
+.aboutme {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  color: black;
+  margin-top: 3vh;
+}
+.aboutme1 {
+  transform: translateY(-40px);
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+.name1 {
+  color: #7d0a0a;
+  font-size: 3rem;
+  font-weight: 600;
+}
+.aboutme2 {
+  font-size: 10vh;
+
+  margin-left: 2vw;
+}
+
+.aboutme3 {
+  font-size: 5vh;
+  margin-left: 2vw;
+  margin-top: -9vh;
+}
+
+.aboutme4 {
+  font-size: 2.5vh;
+  margin-left: 2vw;
+  margin-top: -3vh;
+}
+
+.mypic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.mypic img {
+  height: 420px;
+  width: 400px;
+  border: 4px solid #1d1616;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(3px 3px 30px);
+}
+/*--------------------------------DOWNLOAD RESUME PART (ABOUT ME)-------------------------------*/
+.resume-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  background-color: #7d0a0a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.resume-btn:hover {
+  background-color: #000000;
+}
+/*--------------------------------SKILLS SECTION PART-------------------------------*/
+#skills {
+  background-color: #3d0301;
+  height: 100vh;
+}
+
+.skilltxt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-weight: -10;
+}
+/*-------------------------------GRID SECTION (SKILLS SECTION)-------------------------------*/
+#skills {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.skilltxt h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.skills1 {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* Two equal columns with a small center column for the line */
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.techskills,
+.softskills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.techskills h2,
+.softskills h2 {
+  font-size: 1.5rem;
+  position: relative;
+  top: -7vh;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.techskills1,
+.softskills1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  text-align: left;
+  column-gap: 2rem;
+}
+
+.softskills1 p {
+  column-gap: 2rem;
+}
+
+.techskills1 p,
+.softskills1 p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  background-color: white;
+  border: 1px solid transparent;
+  padding: 10px;
+  border-radius: 8px;
+}
+.techskills1 p:hover,
+.softskills1 p:hover {
+  background-color: #3d0301;
+  backdrop-filter: blur(5px); /* Blurry effect */
+  transition: 0.3s ease-in-out;
+  color: white;
+  border: 1px solid white;
+}
+
+.techskills1 img,
+.softskills1 img {
+  width: 30px;
+  height: 30px;
+}
+
+.line {
+  width: 4px;
+  height: 70vh;
+  background-color: white;
+  margin: auto;
+}
+
+/*--------------------------------PROJECT PART-------------------------------*/
+#projects {
+  height: 100vh;
+}
+
+.projectxt h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: #3d0301;
+  font-weight: -10;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Project Card Styling */
+.project-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 15px;
+}
+
+.project-title {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 500;
+  font-family: var(--fontfam);
+}
+
+.project-description {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  font-family: var(--fontfam);
+}
+
+/*--------------------------------CERTIFICATE PART-------------------------------*/
+#certificate {
+  background-color: var(--primary);
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.certxt h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: var(--secondary);
+  font-weight: -10;
+  font-size: 2.5rem;
+
+  margin-bottom: 20px;
+}
+/*--------------------------------CARD (CERTIFICATION)-------------------------------*/
+/* From Uiverse.io by eslam-hany */
+.cardy {
+  display: flex;
+  justify-content: center;
+  gap: 4vw;
+}
+.card {
+  display: block;
+
+  align-items: center;
+  position: relative;
+  width: 220px;
+  height: 320px;
+  background: var(--secondary);
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
+  align-items: center; /* Centers horizontally */
+  justify-content: center; /* Centers vertically */
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center; /* Ensures text alignment */
+}
+
+.card img {
+  max-width: 100%; /* Ensures image doesn’t overflow */
+  max-height: 180px; /* Prevents image from taking too much space */
+  object-fit: contain; /* Keeps aspect ratio intact */
+  margin-bottom: 10px; /* Adds spacing between image and text */
+}
+
+.card p {
+  margin: 0;
+  padding: 0 10px;
+  font-family: var(--fontfam);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.card1 {
+  display: block;
+
+  align-items: center;
+  position: relative;
+  width: 220px;
+  height: 320px;
+  background: var(--secondary);
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
+  align-items: center; /* Centers horizontally */
+  justify-content: center; /* Centers vertically */
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center; /* Ensures text alignment */
+}
+
+.card1 img {
+  max-width: 100%; /* Ensures image doesn’t overflow */
+  max-height: 180px; /* Prevents image from taking too much space */
+  object-fit: contain; /* Keeps aspect ratio intact */
+  margin-bottom: 10px; /* Adds spacing between image and text */
+}
+
+.card1 p {
+  margin: 0;
+  padding: 0 10px;
+  font-family: var(--fontfam);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9); /* Dark overlay */
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #ccc;
+}
+
+.clickable-image {
+  cursor: pointer;
+}
+
+.view-btn {
+  display: block;
+  margin: 15px auto 0;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6em 1em;
+  border: 2px solid transparent;
+  transition: ease-in-out 0.3s;
+  background-color: #be3d2a;
+  color: white;
+  font-weight: 500;
+  font-family: var(--fontfam);
+  font-size: 1rem;
+  margin-top: 5px;
+  border-radius: 20px;
+}
+.view-btn:hover {
+  transform: scale(1.2) rotate(-5deg);
+  background-color: black;
+  color: white;
+}
+
+/*--------------------------------CONTACT ME PART-------------------------------*/
+#contact {
+  height: auto;
+}
+.contactme h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: var(--primary);
+  font-weight: -10;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  width: 100%;
+  padding: 0;
+}
+
+.contact-info {
+  display: flex;
+  position: relative;
+  top: 10vw;
+  justify-content: center;
+}
+
+/* YUNG SPINNER */
+.loader {
+  position: relative;
+  width: 150px;
+  height: 200px;
+}
+
+.loader__bar {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 50%;
+  background: var(--primary);
+  transform-origin: center bottom;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.loader__bar:nth-child(1) {
+  left: 0px;
+  transform: scale(1, 0.2);
+  animation: barUp1 4s infinite;
+}
+
+.loader__bar:nth-child(2) {
+  left: 30px;
+  transform: scale(1, 0.4);
+  animation: barUp2 4s infinite;
+}
+
+.loader__bar:nth-child(3) {
+  left: 60px;
+  transform: scale(1, 0.6);
+  animation: barUp3 4s infinite;
+}
+
+.loader__bar:nth-child(4) {
+  left: 90px;
+  transform: scale(1, 0.8);
+  animation: barUp4 4s infinite;
+}
+
+.loader__bar:nth-child(5) {
+  left: 120px;
+  transform: scale(1, 1);
+  animation: barUp5 4s infinite;
+}
+
+.loader__ball {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: black;
+  border-radius: 50%;
+  animation: ball624 4s infinite;
+}
+
+/* Ball bounce animation */
+@keyframes ball624 {
+  0% {
+    transform: translate(0, 0);
+  }
+  5% {
+    transform: translate(16px, -28px);
+  }
+  10% {
+    transform: translate(30px, -20px);
+  }
+  17% {
+    transform: translate(46px, -48px);
+  }
+  20% {
+    transform: translate(60px, -40px);
+  }
+  27% {
+    transform: translate(76px, -68px);
+  }
+  30% {
+    transform: translate(90px, -60px);
+  }
+  37% {
+    transform: translate(106px, -88px);
+  }
+  40% {
+    transform: translate(120px, -80px);
+  }
+  50% {
+    transform: translate(120px, 0);
+  }
+  57% {
+    transform: translate(106px, -28px);
+  }
+  60% {
+    transform: translate(90px, -20px);
+  }
+  67% {
+    transform: translate(74px, -48px);
+  }
+  70% {
+    transform: translate(60px, -40px);
+  }
+  77% {
+    transform: translate(44px, -68px);
+  }
+  80% {
+    transform: translate(30px, -60px);
+  }
+  87% {
+    transform: translate(14px, -88px);
+  }
+  90% {
+    transform: translate(0, -80px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Bar animations */
+@keyframes barUp1 {
+  0%,
+  40% {
+    transform: scale(1, 0.2);
+  }
+  50%,
+  90% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, 0.2);
+  }
+}
+
+@keyframes barUp2 {
+  0%,
+  40% {
+    transform: scale(1, 0.4);
+  }
+  50%,
+  90% {
+    transform: scale(1, 0.8);
+  }
+  100% {
+    transform: scale(1, 0.4);
+  }
+}
+
+@keyframes barUp3 {
+  0%,
+  100% {
+    transform: scale(1, 0.6);
+  }
+}
+
+@keyframes barUp4 {
+  0%,
+  40% {
+    transform: scale(1, 0.8);
+  }
+  50%,
+  90% {
+    transform: scale(1, 0.4);
+  }
+  100% {
+    transform: scale(1, 0.8);
+  }
+}
+
+@keyframes barUp5 {
+  0%,
+  40% {
+    transform: scale(1, 1);
+  }
+  50%,
+  90% {
+    transform: scale(1, 0.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/*------MESSAGE BOX-----------*/
+.message-box {
+  position: relative;
+  top: 7vh;
+  padding: 20px;
+  background: #fffece;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-left: 2vw;
+  margin-bottom: 50px;
+}
+
+.message-box h3 {
+  color: #7d0a0a;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-family: var(--fontfam);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: var(--fontfam);
+  padding-right: 1px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.send-button {
+  background-color: #7d0a0a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: var(--fontfam);
+  transition: background-color 0.3s;
+}
+
+.send-button:hover {
+  background-color: black;
+}
+/*-------------------- YOU CAN CONTACT ME HERE ---------------------*/
+.contact-info {
+  display: flex;
+  align-items: center;
+  margin-top: 7vh;
+  margin-left: 2vw;
+}
+
+.contacts p {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 5px;
+}
+.contacts a {
+  text-decoration: none;
+  color: black;
+}
+
+.contacts img {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+}
+
+.contacts img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.contacts img:hover {
+  transform: scale(1.2); /* Makes the image bigger on hover */
+}
+
+.ucan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  left: 3vw;
+  top: 2vh;
+
+  font-family: var(--fontfam);
+}
+.ucan h4 {
+  font-weight: 400;
+  color: var(--primary);
+  font-size: 1.4rem;
+  font-style: italic;
+}
+.contacts {
+  display: block;
+
+  position: relative;
+  top: -1vh;
+  left: 8vw;
+}
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--secondary);
+  padding: 10px 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+.scroll-top img {
+  width: 24px;
+  height: 20px;
+}
+.scroll-top:hover {
+  background-color: var(--primary);
+  transform: scale(1.1);
+}
+
+/*--------------------------------RESPONSIVE PART-------------------------------*/
+@media (max-width: 768px) {
+  .logo {
+    height: 5rem;
+    top: -2.5vh;
+  }
+
+  nav ul {
+    padding-bottom: 10px;
+  }
+  nav ul li {
+    margin: 0 -7px;
+  }
+  nav ul li a {
+    font-size: 0.5rem;
+    padding: 1px;
+    gap: 1px;
+  }
+
+  .aboutme {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    margin-right: 2vw;
+  }
+
+  .aboutme2 {
+    font-size: 2rem;
+    padding-bottom: 12px;
+  }
+
+  .aboutme3 {
+    font-size: 1rem;
+  }
+  .name1 {
+    font-size: 2rem;
+  }
+
+  .aboutme4 {
+    font-size: 0.5rem;
+    margin-top: 2vh;
+  }
+  .mypic img {
+    height: 18rem;
+    width: 18rem;
+  }
+  .resume-btn {
+    font-size: 0.7rem;
+  }
+
+  #skills {
+    height: auto;
+  }
+
+  .skills1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .techskills1 p,
+  .softskills1 p {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    padding: 1rem;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+  }
+  .techskills h2 {
+    position: relative;
+    top: 2vh;
+  }
+
+  .softskills h2 {
+    position: relative;
+    top: 2vh;
+  }
+  .line {
+    display: none;
+  }
+  .content {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+  }
+  #projects {
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .projimage {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2vw;
+  }
+  /* Mobile Responsiveness Fix */
+  @media (max-width: 768px) {
+    /* Fix spinner positioning */
+    .contact-info {
+      position: static; /* Remove relative positioning */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center spinner */
+      padding: 20px 0;
+    }
+
+    /* Fix message box positioning */
+    .message-box {
+      position: relative;
+      top: -10px;
+      margin: 0 auto; /* Center horizontally */
+      width: 90%;
+      max-width: 400px;
+    }
+
+    /* Stack grid items vertically */
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Adjust contact items alignment */
+    .contacts {
+      text-align: center;
+      margin-bottom: 30px;
+      display: block;
+      position: relative;
+      left: 25vw;
+    }
+    .loader {
+      display: none;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectxt h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
