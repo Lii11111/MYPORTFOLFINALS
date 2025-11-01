@@ -27,7 +27,6 @@
             <li><a href="#about">About Me</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#certificate">Certifications</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -36,11 +35,11 @@
       <!--------------------------------- ABOUR ME PAGE------------------------------------------------>
       <div class="aboutme">
         <div class="aboutme1">
-          <div class="aboutme2"><p>Hi!</p></div>
-          <div class="aboutme3">
+          <div class="aboutme2 scroll-animate animate-left"><p>Hi!</p></div>
+          <div class="aboutme3 scroll-animate animate-left stagger-1">
             <p>I'm <span class="name1">John Lester Esteves</span></p>
           </div>
-          <div class="aboutme4">
+          <div class="aboutme4 scroll-animate animate-left stagger-2">
             <p>
               An aspiring software developer and web developer passionate about
               building clean, functional, and user-friendly websites. I am
@@ -51,17 +50,17 @@
           <br />
           <br />
           <a href="Esteves_Resume.pdf" download>
-            <button class="resume-btn">Download Resume</button>
+            <button class="resume-btn scroll-animate animate-left stagger-3">Download Resume</button>
           </a>
         </div>
-        <div class="mypic">
+        <div class="mypic scroll-animate animate-right">
           <img src="lii.jpg" alt="My Picture" />
         </div>
       </div>
     </section>
     <!--------------------- SKILLS SECTION------------------------------->
     <section id="skills">
-      <div class="skilltxt"><h1>SKILLS</h1></div>
+      <div class="skilltxt scroll-animate animate-up"><h1>SKILLS</h1></div>
       <div class="skills1">
         <div class="softskills">
           <div class="softskills-container">
@@ -96,7 +95,7 @@
           </div>
         </div>
         <div class="techskills">
-          <div><h2>Technical Skills</h2></div>
+          <div class="scroll-animate animate-right"><h2>Technical Skills</h2></div>
           <div class="techskills-container">
             <div class="techskills-wrapper">
               <div class="techskills1" id="techskillsItems">
@@ -160,95 +159,92 @@
     </section>
     <!--------------------- PROJECT SECTION------------------------------->
     <section id="projects">
-      <div class="projectxt"><h1>PROJECTS</h1></div>
-      <div class="projects-container">
-        <div class="projects-wrapper">
-          <div class="projects-grid" id="projectsGrid">
-            <!-- Project Card 1 -->
-            <div class="project-card">
-              <a href="project.html" class="project-card">
-                <img src="image (2).png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h3 class="project-title">Time Management System with Locking Integration</h3>
-                    <p class="project-description">
-                        Time management system with locking integration using Arduino and Firebase.
-                    </p>
-                </div>
-            </a>
+      <div class="projectxt scroll-animate animate-up"><h1>PROJECTS</h1></div>
+      <div class="projects-grid">
+        <!-- Project Card 1 -->
+        <div class="project-card scroll-animate animate-left stagger-1">
+          <a href="project.html" class="project-card">
+            <img src="image (2).png" alt="Project 1" class="project-image">
+            <div class="project-info">
+                <h3 class="project-title">Time Management System with Locking Integration</h3>
+                <p class="project-description">
+                    Time management system with locking integration using Arduino and Firebase.
+                </p>
             </div>
+        </a>
+        </div>
 
-            <!-- Project Card 2 -->
-            <div class="project-card">
-              <a href="https://metro-jobs.vercel.app/" target="_blank" class="project-card">
-                <img src="metroo.png" alt="Project 2" class="project-image">
-                <div class="project-info">
-                    <h3 class="project-title">Manpower Website (OJT Project)</h3>
-                    <p class="project-description">
-                        A special website project, a viewing purposea for applicants in the company to know the open positions for a certain job.
-                    </p>
-                </div>
-            </a>
+        <!-- Project Card 2 -->
+        <div class="project-card scroll-animate animate-up stagger-2">
+          <a href="https://metro-jobs.vercel.app/" target="_blank" class="project-card">
+            <img src="metroo.png" alt="Project 2" class="project-image">
+            <div class="project-info">
+                <h3 class="project-title">Manpower Website (OJT Project)</h3>
+                <p class="project-description">
+                    A special website project, a viewing purposea for applicants in the company to know the open positions for a certain job.
+                </p>
             </div>
+        </a>
+        </div>
 
-            <!-- Project Card 3 -->
-            <div class="project-card">
-              <a href="https://employee-management-system-psi-beryl.vercel.app/" target="_blank" class="project-card">
-                <img src="ems-ui.png" alt="Project 3" class="project-image">
-                <div class="project-info">
-                    <h3 class="project-title">Employee Management System</h3>
-                    <p class="project-description">
-                        A comprehensive employee management system built with Express.js backend and Supabase database for efficient employee data management and operations.
-                    </p>
-                </div>
-            </a>
+        <!-- Project Card 3 -->
+        <div class="project-card scroll-animate animate-right stagger-3">
+          <a href="https://employee-management-system-psi-beryl.vercel.app/" target="_blank" class="project-card">
+            <img src="ems-ui.png" alt="Project 3" class="project-image">
+            <div class="project-info">
+                <h3 class="project-title">Employee Management System</h3>
+                <p class="project-description">
+                    A comprehensive employee management system built with Express.js backend and Supabase database for efficient employee data management and operations.
+                </p>
             </div>
+        </a>
+        </div>
+      </div>
+      
+      <!--------------------- CERTIFICATIONS PART INSIDE PROJECTS SECTION------------------------------ -->
+      <div class="certifications-container scroll-animate animate-fade">
+        <div class="certxt scroll-animate animate-up stagger-1"><h1>CERTIFICATIONS</h1></div>
+        <div class="certifications-grid">
+          <!-- Card 1 -->
+          <div class="card scroll-animate animate-left stagger-2">
+            <img src="javaa.png" class="clickable-image" data-modal="modal1"/>
+            <p>JAVA FOUNDATIONS</p>
+            <button class="view-btn" data-modal="modal1">View Image</button>
           </div>
+
+          <!-- Card 2 -->
+          <div class="card scroll-animate animate-right stagger-3">
+            <img src="systems.png" class="clickable-image" data-modal="modal2"/>
+            <p>SYSTEMS ADMINISTRATION</p>
+            <button class="view-btn" data-modal="modal2">View Image</button>
+          </div>
+        </div>
+        <div class="modal" id="modal1">
+          <span class="close-btn">&times;</span>
+          <img class="modal-content"/>
+        </div>
+        
+        <div class="modal" id="modal2">
+          <span class="close-btn">&times;</span>
+          <img class="modal-content"/>
         </div>
       </div>
     </section>
-
-    <!--------------------- CERTIFICATIONS PART------------------------------ -->
-    <section id="certificate">
-      <div class="certxt"><h1>CERTIFICATIONS</h1></div>
-      <div class="cardy">
-       <!-- Card 1 -->
-  <div class="card">
-    <img src="javaa.png" class="clickable-image" data-modal="modal1"/>
-    <p>JAVA FOUNDATIONS</p>
-    <button class="view-btn" data-modal="modal1">View Image</button>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="card">
-    <img src="systems.png" class="clickable-image" data-modal="modal2"/>
-    <p>SYSTEMS ADMINISTRATION</p>
-    <button class="view-btn" data-modal="modal2">View Image</button>
-  </div>
-  <div class="modal" id="modal1">
-    <span class="close-btn">&times;</span>
-    <img class="modal-content"/>
-  </div>
-  
-  <div class="modal" id="modal2">
-    <span class="close-btn">&times;</span>
-    <img class="modal-content"/>
-  </div>
-    </section>
     <!--------------------- CONTACTS PART------------------------------ -->
     <section id="contact">
-      <div class="contactme"><h1>CONTACT ME</h1></div>
+      <div class="contactme scroll-animate animate-up"><h1>CONTACT ME</h1></div>
        
       <div class="contact-container">
-      <div class="message-box">
-        <h3>MESSAGE ME</h3>
+      <div class="message-box scroll-animate animate-left stagger-1">
+        <h3 class="scroll-animate animate-left stagger-2">MESSAGE ME</h3>
         <form action="https://formspree.io/f/mvgkdrab" method="POST" class="message-form">
-          <div class="form-group">
+          <div class="form-group scroll-animate animate-left stagger-3">
             <input type="text" name="name" placeholder="Your Name" required>
           </div>
-          <div class="form-group">
+          <div class="form-group scroll-animate animate-left stagger-4">
             <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
           </div>
-          <button type="submit" class="send-button">SEND MESSAGE</button>
+          <button type="submit" class="send-button scroll-animate animate-left stagger-5">SEND MESSAGE</button>
         </form>
         
         </div>
@@ -259,32 +255,32 @@
      
 
 
-          <div class="ucan">
+          <div class="ucan scroll-animate animate-right stagger-1">
             <div class="ucan1">
-              <h4>You can directly contact me here :</h4>
+              <h4 class="scroll-animate animate-right stagger-2">You can directly contact me here :</h4>
              
               
                 <div class="contacts">
-                  <p>
+                  <p class="scroll-animate animate-right stagger-3">
                     <a href="mailto:lesteresteves03@gmail.com">
                     <img src="email.png" alt="Email" />
                     E-mail
                   </a>
                   </p>
     
-                  <p>
+                  <p class="scroll-animate animate-right stagger-4">
                     <a href="https://www.facebook.com/Liiisjdz"
                       ><img src="facebook.png" alt="Facebook" /> Facebook</a
                     >
                   </p>
     
-                  <p>
+                  <p class="scroll-animate animate-right stagger-5">
                     
                     <img src="telephone.png" alt="Phone" /> 09 851 792 940</a
                     >
                   </p>
     
-                  <p>
+                  <p class="scroll-animate animate-right stagger-6">
                     <a href="https://www.linkedin.com/in/john-lester-esteves-b519aa2b1/">
                     <img src="linkedin.png" alt="LinkedIn" />
                     LinkedIn

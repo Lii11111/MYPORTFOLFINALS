@@ -53,16 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-// Clone items for infinite loop animation (Project Images)
+// Project Images Slider (Static, no cloning)
 document.addEventListener("DOMContentLoaded", function () {
-  const sliderTrack = document.getElementById("sliderTrack");
-  const sliderWrapper = document.querySelector(".slider-wrapper");
-  
-  if (sliderTrack && sliderWrapper) {
-    const clone = sliderTrack.cloneNode(true);
-    clone.setAttribute("aria-hidden", "true");
-    sliderWrapper.appendChild(clone);
-  }
 
   // Modal image view
   const modal = document.getElementById("imageModal");
@@ -146,14 +138,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Clone items for infinite loop animation (Projects)
+// Scroll Animation Observer
 document.addEventListener("DOMContentLoaded", function () {
-  const projectsGrid = document.getElementById("projectsGrid");
-  const projectsWrapper = document.querySelector(".projects-wrapper");
-  
-  if (projectsGrid && projectsWrapper) {
-    const clone = projectsGrid.cloneNode(true);
-    clone.setAttribute("aria-hidden", "true");
-    projectsWrapper.appendChild(clone);
-  }
+  // Create Intersection Observer
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+        // Unobserve after animation to prevent re-triggering
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all scroll-animate elements
+  const animateElements = document.querySelectorAll('.scroll-animate');
+  animateElements.forEach(el => observer.observe(el));
 });
+
