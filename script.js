@@ -4,19 +4,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalImg = document.querySelector(".modal-image");
   const closeBtn = document.querySelector(".close-modal");
 
-  // Open modal when image is clicked
-  images.forEach((img) => {
-    img.addEventListener("click", () => {
-      modal.style.display = "flex";
-      modalImg.src = img.src;
+  if (images.length && modal && modalImg && closeBtn) {
+    images.forEach((img) => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
     });
-  });
 
-  // Close modal when X is clicked
-  closeBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // Prevent bubbling to modal
-    modal.style.display = "none";
-  });
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      modal.style.display = "none";
+    });
+  }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -53,94 +53,47 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-// PROJECT SLIDERRRRRRRRRRRRRRRRRRRRR--------------------------------------------
-const sliderTrack = document.getElementById("sliderTrack");
-const items = document.querySelectorAll(".slider-item");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const modal = document.getElementById("imageModal");
-const modalImg = document.getElementById("modalImage");
-const captionText = document.getElementById("caption");
-const closeBtn = document.querySelector(".close");
-
-let currentIndex = 2; // Start with 3rd image (center)
-const itemWidth = 220; // 200px width + 20px gap
-
-function updateSlider() {
-  // Remove active class from all items
-  items.forEach((item) => item.classList.remove("active"));
-
-  // Add active class to current item
-  items[currentIndex].classList.add("active");
-
-  // Calculate new position
-  const newPosition =
-    -currentIndex * itemWidth + (window.innerWidth / 2 - itemWidth / 2);
-  sliderTrack.style.transform = `translateX(${newPosition}px)`;
-
-  // Handle infinite loop (when reaching cloned items)
-  if (currentIndex === 0) {
-    setTimeout(() => {
-      currentIndex = items.length - 2;
-      sliderTrack.style.transition = "none";
-      updateSlider();
-      setTimeout(() => {
-        sliderTrack.style.transition = "transform 0.5s ease";
-      }, 50);
-    }, 500);
+// Clone items for infinite loop animation (Project Images)
+document.addEventListener("DOMContentLoaded", function () {
+  const sliderTrack = document.getElementById("sliderTrack");
+  const sliderWrapper = document.querySelector(".slider-wrapper");
+  
+  if (sliderTrack && sliderWrapper) {
+    const clone = sliderTrack.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    sliderWrapper.appendChild(clone);
   }
 
-  if (currentIndex === items.length - 1) {
-    setTimeout(() => {
-      currentIndex = 1;
-      sliderTrack.style.transition = "none";
-      updateSlider();
-      setTimeout(() => {
-        sliderTrack.style.transition = "transform 0.5s ease";
-      }, 50);
-    }, 500);
+  // Modal image view
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  const captionText = document.getElementById("caption");
+  const closeBtn = document.querySelector(".close");
+
+  document.querySelectorAll(".slider-item img").forEach((img) => {
+    img.addEventListener("click", function () {
+      if (!modal || !modalImg) return;
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      if (captionText) captionText.innerHTML = this.alt || "Project Image";
+    });
+  });
+  
+  if (closeBtn) {
+    closeBtn.onclick = function () { 
+      if (modal) modal.style.display = "none"; 
+    };
   }
-}
-
-function slide(direction) {
-  currentIndex += direction;
-  updateSlider();
-}
-
-prevBtn.addEventListener("click", () => slide(-1));
-nextBtn.addEventListener("click", () => slide(1));
-
-// Initialize
-updateSlider();
-// Get the modal and its elements
-
-// Add click event to all slider images
-document.querySelectorAll(".slider-item img").forEach((img) => {
-  img.addEventListener("click", function () {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt || "Project Image";
+  
+  window.onclick = function (event) { 
+    if (event.target == modal && modal) modal.style.display = "none"; 
+  };
+  
+  document.addEventListener("keydown", function (event) { 
+    if (event.key === "Escape" && modal) modal.style.display = "none"; 
   });
 });
-
-// Close modal when X is clicked
-closeBtn.onclick = function () {
-  modal.style.display = "none";
-};
-
-// Close modal when clicking outside image
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
-// Close with ESC key
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    modal.style.display = "none";
-  }
-});
+// (Removed redundant global modal handlers to avoid ReferenceErrors)
 
 document.addEventListener("DOMContentLoaded", function () {
   const loginSlider = document.querySelector("#loginSlider");
@@ -167,4 +120,40 @@ document.addEventListener("DOMContentLoaded", function () {
     current = (current - 1 + slides.length) % slides.length;
     showSlide(current);
   });
+});
+
+// Clone items for infinite loop animation (Soft Skills)
+document.addEventListener("DOMContentLoaded", function () {
+  const softskillsCards = document.getElementById("softskillsCards");
+  const softskillsWrapper = document.querySelector(".softskills-wrapper");
+  
+  if (softskillsCards && softskillsWrapper) {
+    const clone = softskillsCards.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    softskillsWrapper.appendChild(clone);
+  }
+});
+
+// Clone items for infinite loop animation (Technical Skills)
+document.addEventListener("DOMContentLoaded", function () {
+  const techskillsItems = document.getElementById("techskillsItems");
+  const techskillsWrapper = document.querySelector(".techskills-wrapper");
+  
+  if (techskillsItems && techskillsWrapper) {
+    const clone = techskillsItems.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    techskillsWrapper.appendChild(clone);
+  }
+});
+
+// Clone items for infinite loop animation (Projects)
+document.addEventListener("DOMContentLoaded", function () {
+  const projectsGrid = document.getElementById("projectsGrid");
+  const projectsWrapper = document.querySelector(".projects-wrapper");
+  
+  if (projectsGrid && projectsWrapper) {
+    const clone = projectsGrid.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    projectsWrapper.appendChild(clone);
+  }
 });
