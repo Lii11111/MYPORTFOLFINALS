@@ -1475,6 +1475,7 @@ nav ul li a::after {
     height: clamp(15rem, 50vw, 20rem);
     width: clamp(15rem, 50vw, 20rem);
     max-width: 100%;
+    filter: none;
   }
   
   .resume-btn {
@@ -1864,6 +1865,7 @@ nav ul li a::after {
   .mypic img {
     height: clamp(12rem, 60vw, 16rem);
     width: clamp(12rem, 60vw, 16rem);
+    filter: none;
   }
   
   .resume-btn {
