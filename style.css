@@ -199,7 +199,7 @@ nav ul li a::after {
 }
 
 .aboutme4 p {
-  text-align: justify;
+  text-align: center;
 }
 
 .mypic {
@@ -1462,7 +1462,7 @@ nav ul li a::after {
   }
   
   .aboutme4 p {
-    text-align: justify;
+    text-align: center;
   }
   
   .mypic {
@@ -1859,7 +1859,7 @@ nav ul li a::after {
   }
   
   .aboutme4 p {
-    text-align: justify;
+    text-align: center;
   }
   
   .mypic img {
