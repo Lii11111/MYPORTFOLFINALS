@@ -164,7 +164,7 @@ nav ul li a::after {
   align-items: center;
   gap: 20px;
   color: black;
-  margin-top: 3vh;
+  margin-top: 1vh;
   width: 100%;
   box-sizing: border-box;
   padding: 0 20px;
@@ -181,20 +181,25 @@ nav ul li a::after {
 }
 .aboutme2 {
   font-size: 10vh;
-
   margin-left: 2vw;
+  margin-bottom: -2vh;
 }
 
 .aboutme3 {
   font-size: 5vh;
   margin-left: 2vw;
-  margin-top: -9vh;
+  margin-top: -7vh;
+  margin-bottom: -1vh;
 }
 
 .aboutme4 {
   font-size: 2.5vh;
   margin-left: 2vw;
-  margin-top: -3vh;
+  margin-top: -2vh;
+}
+
+.aboutme4 p {
+  text-align: justify;
 }
 
 .mypic {
@@ -224,8 +229,8 @@ nav ul li a::after {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  margin-top: clamp(20px, 4vh, 40px);
-  margin-bottom: clamp(20px, 4vh, 40px);
+  margin-top: clamp(15px, 2vh, 25px);
+  margin-bottom: 0;
 }
 
 .resume-btn:hover {
@@ -1273,22 +1278,48 @@ nav ul li a::after {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: var(--secondary);
-  padding: 10px 15px;
+  background: linear-gradient(135deg, #7d0a0a 0%, #3d0301 100%);
+  padding: 12px;
   border-radius: 50%;
   text-decoration: none;
   font-size: 24px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: 0.3s ease;
+  box-shadow: 
+    0 4px 12px rgba(61, 3, 1, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
+
 .scroll-top img {
   width: 24px;
   height: 20px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
 }
+
 .scroll-top:hover {
-  background-color: var(--primary);
-  transform: scale(1.1);
+  background: linear-gradient(135deg, #3d0301 0%, #7d0a0a 100%);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 8px 20px rgba(61, 3, 1, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.scroll-top:hover img {
+  transform: translateY(-2px);
+}
+
+.scroll-top:active {
+  transform: translateY(-3px) scale(1.02);
 }
 
 /*--------------------------------RESPONSIVE PART-------------------------------*/
@@ -1401,7 +1432,7 @@ nav ul li a::after {
     align-items: center;
     text-align: center;
     padding: 20px;
-    gap: 30px;
+    gap: 20px;
   }
 
   .aboutme1 {
@@ -1411,11 +1442,13 @@ nav ul li a::after {
 
   .aboutme2 {
     font-size: clamp(2rem, 6vw, 3rem);
-    padding-bottom: 15px;
+    padding-bottom: 8px;
+    margin-bottom: -5px;
   }
 
   .aboutme3 {
     font-size: clamp(1.2rem, 4vw, 1.5rem);
+    margin-bottom: -3px;
   }
   
   .name1 {
@@ -1424,8 +1457,12 @@ nav ul li a::after {
 
   .aboutme4 {
     font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-    margin-top: 20px;
+    margin-top: 10px;
     line-height: 1.6;
+  }
+  
+  .aboutme4 p {
+    text-align: justify;
   }
   
   .mypic {
@@ -1443,7 +1480,8 @@ nav ul li a::after {
   .resume-btn {
     font-size: clamp(0.9rem, 2.5vw, 1rem);
     padding: 12px 24px;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 0;
   }
 
   /* Skills Section */
@@ -1760,9 +1798,9 @@ nav ul li a::after {
     }
   
   .scroll-top {
-    width: clamp(40px, 8vw, 48px);
-    height: clamp(40px, 8vw, 48px);
-    padding: clamp(8px, 1.5vw, 12px);
+    width: clamp(45px, 8vw, 50px);
+    height: clamp(45px, 8vw, 50px);
+    padding: clamp(10px, 1.5vw, 12px);
     bottom: clamp(15px, 3vh, 25px);
     right: clamp(15px, 3vw, 25px);
     box-sizing: border-box;
@@ -1796,14 +1834,18 @@ nav ul li a::after {
   
   .aboutme {
     padding: 15px;
+    gap: 20px;
   }
   
   .aboutme2 {
     font-size: clamp(1.8rem, 8vw, 2.5rem);
+    padding-bottom: 5px;
+    margin-bottom: -3px;
   }
   
   .aboutme3 {
     font-size: clamp(1rem, 5vw, 1.3rem);
+    margin-bottom: -2px;
   }
   
   .name1 {
@@ -1812,6 +1854,11 @@ nav ul li a::after {
   
   .aboutme4 {
     font-size: clamp(0.85rem, 3.5vw, 1rem);
+    margin-top: 8px;
+  }
+  
+  .aboutme4 p {
+    text-align: justify;
   }
   
   .mypic img {
@@ -1822,6 +1869,8 @@ nav ul li a::after {
   .resume-btn {
     font-size: clamp(0.85rem, 3vw, 0.95rem);
     padding: 10px 20px;
+    margin-top: 12px;
+    margin-bottom: 0;
   }
   
   #skills {
@@ -1994,9 +2043,9 @@ nav ul li a::after {
   }
   
   .scroll-top {
-    width: clamp(38px, 7.5vw, 45px);
-    height: clamp(38px, 7.5vw, 45px);
-    padding: clamp(7px, 1.3vw, 10px);
+    width: clamp(42px, 7.5vw, 48px);
+    height: clamp(42px, 7.5vw, 48px);
+    padding: clamp(8px, 1.3vw, 10px);
     bottom: clamp(12px, 2.5vh, 20px);
     right: clamp(12px, 2.5vw, 20px);
   }

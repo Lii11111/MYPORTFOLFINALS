@@ -1,0 +1,23 @@
+{
+  "name": "myportfolfinals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lii11111/MYPORTFOLFINALS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lii11111/MYPORTFOLFINALS/issues"
+  },
+  "homepage": "https://github.com/Lii11111/MYPORTFOLFINALS#readme",
+  "dependencies": {
+    "@modelcontextprotocol/server-filesystem": "^2025.8.21"
+  }
+}
