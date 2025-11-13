@@ -561,6 +561,7 @@ nav ul li a::after {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .certifications-grid .card:hover {
@@ -570,18 +571,28 @@ nav ul li a::after {
 
 .certifications-grid .card img {
   max-width: 100%;
+  width: 100%;
   max-height: 180px;
+  height: auto;
   object-fit: contain;
   margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
 .certifications-grid .card p {
   margin: 0;
-  padding: 0 10px;
+  padding: 0 8px;
   font-family: var(--fontfam);
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: clamp(0.75rem, 2vw, 1.1rem);
   color: #3d0301;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.3;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .certifications-grid .view-btn {
@@ -1592,12 +1603,26 @@ nav ul li a::after {
     width: clamp(140px, 30vw, 180px);
     min-width: clamp(140px, 30vw, 180px);
     height: clamp(200px, 45vw, 280px);
+    padding: 8px;
     padding-bottom: clamp(12px, 2.5vh, 20px);
     flex-shrink: 0;
+    overflow: hidden;
+  }
+  
+  .certifications-grid .card img {
+    max-height: clamp(120px, 30vw, 160px);
+  }
+  
+  .certifications-grid .card p {
+    font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+    padding: 0 5px;
+    line-height: 1.2;
   }
   
   .certifications-grid .view-btn {
     margin-bottom: clamp(5px, 1vh, 8px);
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+    padding: 6px 12px;
   }
 
   /* Contact Section */
@@ -1872,12 +1897,26 @@ nav ul li a::after {
     width: clamp(120px, 28vw, 160px);
     min-width: clamp(120px, 28vw, 160px);
     height: clamp(180px, 42vw, 240px);
+    padding: 6px;
     padding-bottom: clamp(10px, 2vh, 18px);
     flex-shrink: 0;
+    overflow: hidden;
+  }
+  
+  .certifications-grid .card img {
+    max-height: clamp(100px, 28vw, 140px);
+  }
+  
+  .certifications-grid .card p {
+    font-size: clamp(0.65rem, 1.6vw, 0.85rem);
+    padding: 0 4px;
+    line-height: 1.2;
   }
   
   .certifications-grid .view-btn {
     margin-bottom: clamp(5px, 1vh, 8px);
+    font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+    padding: 5px 10px;
   }
   
   #contact {
@@ -2008,11 +2047,25 @@ nav ul li a::after {
     width: 110px;
     min-width: 110px;
     height: 170px;
+    padding: 5px;
     padding-bottom: clamp(8px, 1.5vh, 15px);
     flex-shrink: 0;
+    overflow: hidden;
+  }
+  
+  .certifications-grid .card img {
+    max-height: clamp(80px, 25vw, 120px);
+  }
+  
+  .certifications-grid .card p {
+    font-size: clamp(0.6rem, 1.4vw, 0.75rem);
+    padding: 0 3px;
+    line-height: 1.1;
   }
   
   .certifications-grid .view-btn {
     margin-bottom: clamp(3px, 0.8vh, 6px);
+    font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+    padding: 4px 8px;
   }
 }
