@@ -152,7 +152,7 @@ nav ul li a::after {
 /*--------------------------------SECTION PART (ABOUT ME)-------------------------------*/
 
 #about {
-  height: 100vh;
+  height: auto;
   margin-bottom: clamp(50px, 8vh, 100px);
   padding-bottom: clamp(30px, 6vh, 60px);
   width: 100%;
