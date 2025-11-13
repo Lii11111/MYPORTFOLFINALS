@@ -4,11 +4,29 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
 body {
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 100vw;
+}
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hide scrollbars but keep scrolling functionality */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 header {
   position: absolute;
@@ -27,72 +45,37 @@ header {
 /*--------------------------------SCROLL ANIMATIONS------------------------------*/
 .scroll-animate {
   opacity: 0;
-  transition: all 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity, filter;
+  transition: opacity 0.6s ease-in-out;
+  will-change: opacity;
 }
 
-.scroll-animate.animate-left {
-  transform: translateX(-60px) scale(0.92);
-  filter: blur(3px);
-}
-
-.scroll-animate.animate-right {
-  transform: translateX(60px) scale(0.92);
-  filter: blur(3px);
-}
-
-.scroll-animate.animate-up {
-  transform: translateY(40px) scale(0.92);
-  filter: blur(3px);
-}
-
-.scroll-animate.animate-down {
-  transform: translateY(-40px) scale(0.92);
-  filter: blur(3px);
-}
-
+.scroll-animate.animate-left,
+.scroll-animate.animate-right,
+.scroll-animate.animate-up,
+.scroll-animate.animate-down,
 .scroll-animate.animate-fade {
-  transform: scale(0.88);
-  filter: blur(4px);
+  opacity: 0;
 }
 
 .scroll-animate.animated {
   opacity: 1;
-  transform: translateX(0) translateY(0) scale(1);
-  filter: blur(0);
 }
 
 /* Enhanced project card animations */
 .project-card.scroll-animate {
-  transition: all 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.6s ease-in-out;
   backface-visibility: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.project-card.scroll-animate.animate-left {
-  transform: translateX(-100px) scale(0.8);
-  filter: blur(6px) brightness(0.7);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.project-card.scroll-animate.animate-right {
-  transform: translateX(100px) scale(0.8);
-  filter: blur(6px) brightness(0.7);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
+.project-card.scroll-animate.animate-left,
+.project-card.scroll-animate.animate-right,
 .project-card.scroll-animate.animate-up {
-  transform: translateY(60px) scale(0.8);
-  filter: blur(6px) brightness(0.7);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  opacity: 0;
 }
 
 .project-card.scroll-animate.animated {
   opacity: 1;
-  transform: translateX(0) translateY(0) scale(1);
-  filter: blur(0) brightness(1);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 1.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Stagger animations for child elements */
@@ -132,24 +115,24 @@ nav ul li a {
   font-family: "Manrope", sans-serif;
   display: inline-block;
   padding: 0.8vw 1.5vw;
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, #7d0a0a 0%, #3d0301 100%);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(61, 3, 1, 0.3);
+  box-shadow: 0 4px 16px 0 rgba(61, 3, 1, 0.3);
   border-radius: 12px;
   text-decoration: none;
   position: relative;
-  color: black;
+  color: white;
   font-size: 1.2vw;
   font-weight: 430;
   transition: all 0.3s ease;
 }
 
 nav ul li a:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #3d0301 0%, #7d0a0a 100%);
+  border: 1px solid rgba(61, 3, 1, 0.5);
+  box-shadow: 0 6px 20px 0 rgba(61, 3, 1, 0.4);
   transform: translateY(-2px);
 }
 
@@ -172,6 +155,8 @@ nav ul li a::after {
   height: 100vh;
   margin-bottom: clamp(50px, 8vh, 100px);
   padding-bottom: clamp(30px, 6vh, 60px);
+  width: 100%;
+  overflow-x: hidden;
 }
 .aboutme {
   display: grid;
@@ -180,6 +165,9 @@ nav ul li a::after {
   gap: 20px;
   color: black;
   margin-top: 3vh;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
 .aboutme1 {
   transform: translateY(-40px);
@@ -246,8 +234,13 @@ nav ul li a::after {
 /*--------------------------------SKILLS SECTION PART-------------------------------*/
 #skills {
   background-color: #3d0301;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   padding-top: clamp(30px, 6vh, 60px);
+  padding-bottom: clamp(30px, 6vh, 60px);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .skilltxt {
@@ -307,17 +300,24 @@ nav ul li a::after {
 }
 
 .techskills-container {
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
+  max-width: 100vw;
   position: relative;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .techskills-wrapper {
   display: flex;
   width: fit-content;
+  max-width: calc(100vw - 40px);
   gap: 20px;
   animation: scroll 40s linear infinite;
   will-change: transform;
+  overflow: visible;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .techskills1 {
@@ -329,6 +329,7 @@ nav ul li a::after {
   align-items: flex-start;
   flex-shrink: 0;
   min-width: fit-content;
+  max-width: calc(100vw - 60px);
 }
 
 .techskill-item {
@@ -418,6 +419,9 @@ nav ul li a::after {
   height: auto;
   min-height: 100vh;
   padding-bottom: 50px;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .projectxt h1 {
@@ -444,7 +448,10 @@ nav ul li a::after {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Project Card Styling */
@@ -525,17 +532,21 @@ nav ul li a::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(30px, 5vw, 50px);
-  flex-wrap: wrap;
+  gap: clamp(15px, 3vw, 50px);
+  flex-wrap: nowrap;
   margin-top: 20px;
+  overflow: visible;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .certifications-grid .card {
   display: flex;
   align-items: center;
   position: relative;
-  width: 220px;
-  height: 320px;
+  width: clamp(160px, 25vw, 220px);
+  min-width: clamp(160px, 25vw, 220px);
+  height: clamp(240px, 40vw, 320px);
   background: white;
   flex-direction: column;
   justify-content: center;
@@ -544,10 +555,12 @@ nav ul li a::after {
   border-radius: 15px;
   cursor: pointer;
   padding: 10px;
+  padding-bottom: clamp(15px, 3vh, 25px);
   box-sizing: border-box;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
 }
 
 .certifications-grid .card:hover {
@@ -573,6 +586,7 @@ nav ul li a::after {
 
 .certifications-grid .view-btn {
   margin-top: 10px;
+  margin-bottom: clamp(5px, 1vh, 10px);
   padding: 8px 16px;
   background: #3d0301;
   color: white;
@@ -590,47 +604,47 @@ nav ul li a::after {
 /*--------------------------------CARD (CERTIFICATION)-------------------------------*/
 /* From Uiverse.io by eslam-hany */
 .softskills-container {
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
+  max-width: 100vw;
   position: relative;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .softskills-wrapper {
   display: flex;
-  width: fit-content;
-  gap: 4vw;
-  animation: scroll-softskills 30s linear infinite;
-  will-change: transform;
+  width: 100%;
+  max-width: 100vw;
+  gap: clamp(10px, 2vw, 30px);
+  overflow: visible;
+  justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .softskills-wrapper .cardy {
   display: flex;
-  gap: 4vw;
+  gap: clamp(10px, 2vw, 30px);
   flex-shrink: 0;
 }
 
 .cardy {
   display: flex;
   justify-content: center;
-  gap: 4vw;
+  gap: clamp(10px, 2vw, 30px);
+  flex-wrap: nowrap;
 }
 
-@keyframes scroll-softskills {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 .softskills-container .card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 220px;
-  height: 320px;
+  width: clamp(160px, 15vw, 200px);
+  height: clamp(280px, 45vw, 320px);
+  flex-shrink: 0;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
   backdrop-filter: blur(25px) saturate(200%);
   -webkit-backdrop-filter: blur(25px) saturate(200%);
@@ -675,6 +689,9 @@ nav ul li a::after {
 }
 
 .softskills-container .card img {
+  width: clamp(60px, 8vw, 90px);
+  height: clamp(60px, 8vw, 90px);
+  object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
   transition: transform 0.4s ease, filter 0.4s ease;
 }
@@ -687,11 +704,15 @@ nav ul li a::after {
 .softskills-container .card p {
   color: white;
   font-weight: 600;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  text-align: center;
   text-shadow: 
     0 2px 10px rgba(0, 0, 0, 0.4),
     0 0 20px rgba(255, 255, 255, 0.1);
   letter-spacing: 0.5px;
   transition: all 0.4s ease;
+  padding: 0 5px;
+  word-wrap: break-word;
 }
 
 .softskills-container .card:hover p {
@@ -838,6 +859,9 @@ nav ul li a::after {
   height: auto;
   padding-top: 30px;
   padding-bottom: 40px;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 .contactme h1 {
   display: flex;
@@ -858,7 +882,7 @@ nav ul li a::after {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 40px);
-  gap: clamp(25px, 4vw, 40px);
+  gap: clamp(40px, 6vw, 80px);
   align-items: center;
   box-sizing: border-box;
 }
@@ -1157,33 +1181,39 @@ nav ul li a::after {
   color: var(--primary);
 }
 
-.contacts img {
-  width: 40px;
-  height: 40px;
+#contact .contacts img {
+  width: clamp(30px, 4vw, 40px);
+  height: clamp(30px, 4vw, 40px);
   vertical-align: middle;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
-.contacts img {
+#contact .contacts img {
   transition: transform 0.3s ease-in-out;
 }
 
-.contacts img:hover {
+#contact .contacts img:hover {
   transform: scale(1.2); /* Makes the image bigger on hover */
 }
 
 #contact .ucan {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch;
   position: static;
   font-family: var(--fontfam);
   align-self: center;
   background: var(--secondary);
-  padding: clamp(10px, 2vw, 18px) clamp(25px, 4vw, 40px);
+  padding: clamp(20px, 3vw, 30px) clamp(20px, 3vw, 30px);
   border-radius: 30px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
-  margin-left: clamp(20px, 4vw, 40px);
+  margin: 0 auto;
+  width: 100%;
+  max-width: min(900px, calc(100vw - clamp(40px, 8vw, 80px)));
+  overflow: visible;
 }
 #contact .ucan h4 {
   font-weight: 400;
@@ -1196,19 +1226,37 @@ nav ul li a::after {
   margin-top: 0;
 }
 #contact .contacts {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  justify-content: center;
-  position: static;
+  justify-items: center;
   width: 100%;
+  padding: 10px 0;
+  gap: clamp(10px, 2vw, 20px);
+  box-sizing: border-box;
 }
 #contact .contacts p {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 6px;
   margin: 0;
+  padding: 6px 8px;
   color: var(--primary);
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: visible;
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  box-sizing: border-box;
+  min-width: fit-content;
+}
+#contact .contacts p a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
 }
 .scroll-top {
   position: fixed;
@@ -1247,7 +1295,7 @@ nav ul li a::after {
   }
   
   .contact-container {
-    gap: clamp(25px, 4vw, 35px);
+    gap: clamp(35px, 5vw, 50px);
     padding: 0 clamp(20px, 4vw, 40px);
   }
   
@@ -1258,6 +1306,16 @@ nav ul li a::after {
   
   #contact .ucan {
     padding: clamp(18px, 3vw, 22px) clamp(22px, 4vw, 28px);
+  }
+  
+  #contact .contacts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(15px, 3vw, 25px);
+  }
+  
+  #contact .contacts p {
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    padding: 8px 10px;
   }
 }
 
@@ -1288,6 +1346,16 @@ nav ul li a::after {
   
   .techskill-item span {
     font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  }
+  
+  #contact .contacts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(12px, 2.5vw, 20px);
+  }
+  
+  #contact .contacts p {
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+    padding: 8px 10px;
   }
 }
 
@@ -1389,18 +1457,40 @@ nav ul li a::after {
   .softskills-container,
   .techskills-container {
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
+    padding: 0 15px;
   }
   
-  .softskills-wrapper .cardy,
+  .techskills-wrapper {
+    max-width: calc(100vw - 30px);
+    padding: 0 5px;
+  }
+  
+  .techskills1 {
+    max-width: calc(100vw - 40px);
+  }
+  
+  .softskills-wrapper {
+    gap: clamp(10px, 2vw, 20px);
+  }
+  
+  .softskills-wrapper .cardy {
+    gap: clamp(10px, 2vw, 20px);
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  
   .techskills-wrapper .techskills1 {
     gap: clamp(15px, 3vw, 25px);
   }
   
   .softskills-container .card {
-    width: clamp(180px, 40vw, 220px);
+    width: calc((100% - 20px) / 2);
+    min-width: 160px;
+    max-width: 220px;
     height: clamp(250px, 50vw, 320px);
     padding: 15px;
+    flex: 0 0 auto;
   }
   
   .softskills-container .card img {
@@ -1417,9 +1507,19 @@ nav ul li a::after {
     margin-bottom: 20px;
   }
   
+  .techskills-container {
+    padding: 0 10px;
+  }
+  
+  .techskills-wrapper {
+    max-width: calc(100vw - 20px);
+    padding: 0 5px;
+  }
+  
   .techskills1 {
     gap: clamp(12px, 3vw, 18px);
     padding: 15px 10px;
+    max-width: calc(100vw - 30px);
   }
   
   .techskill-item {
@@ -1483,13 +1583,21 @@ nav ul li a::after {
   }
   
   .certifications-grid {
-    gap: 25px;
-    flex-wrap: wrap;
+    gap: clamp(12px, 2vw, 20px);
+    flex-wrap: nowrap;
+    overflow: visible;
   }
 
   .certifications-grid .card {
-    width: clamp(180px, 40vw, 220px);
-    height: clamp(250px, 50vw, 320px);
+    width: clamp(140px, 30vw, 180px);
+    min-width: clamp(140px, 30vw, 180px);
+    height: clamp(200px, 45vw, 280px);
+    padding-bottom: clamp(12px, 2.5vh, 20px);
+    flex-shrink: 0;
+  }
+  
+  .certifications-grid .view-btn {
+    margin-bottom: clamp(5px, 1vh, 8px);
   }
 
   /* Contact Section */
@@ -1508,7 +1616,7 @@ nav ul li a::after {
       display: flex;
       flex-direction: column;
     align-items: center;
-    gap: clamp(25px, 5vh, 35px);
+    gap: clamp(35px, 6vh, 50px);
     padding: 0 clamp(10px, 3vw, 20px);
     max-width: 100%;
     width: 100%;
@@ -1582,16 +1690,22 @@ nav ul li a::after {
   }
   
   #contact .contacts {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
     gap: clamp(12px, 3vw, 22px);
     width: 100%;
     align-items: center;
+    padding: 10px 5px;
   }
   
   #contact .contacts p {
     margin: 0;
-    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 10px;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    justify-content: center;
   }
   
   .contacts img {
@@ -1694,10 +1808,23 @@ nav ul li a::after {
     margin-bottom: 25px;
   }
   
+  .softskills-wrapper {
+    gap: clamp(8px, 1.5vw, 15px);
+  }
+  
+  .softskills-wrapper .cardy {
+    gap: clamp(8px, 1.5vw, 15px);
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  
   .softskills-container .card {
-    width: clamp(160px, 45vw, 200px);
+    width: calc((100% - 15px) / 2);
+    min-width: 140px;
+    max-width: 200px;
     height: clamp(220px, 55vw, 280px);
     padding: 12px;
+    flex: 0 0 auto;
   }
   
   .softskills-container .card img {
@@ -1735,9 +1862,22 @@ nav ul li a::after {
     padding: 25px 15px;
   }
   
+  .certifications-grid {
+    gap: clamp(10px, 1.5vw, 15px);
+    flex-wrap: nowrap;
+    overflow: visible;
+  }
+  
   .certifications-grid .card {
-    width: clamp(150px, 45vw, 200px);
-    height: clamp(220px, 55vw, 300px);
+    width: clamp(120px, 28vw, 160px);
+    min-width: clamp(120px, 28vw, 160px);
+    height: clamp(180px, 42vw, 240px);
+    padding-bottom: clamp(10px, 2vh, 18px);
+    flex-shrink: 0;
+  }
+  
+  .certifications-grid .view-btn {
+    margin-bottom: clamp(5px, 1vh, 8px);
   }
   
   #contact {
@@ -1751,7 +1891,7 @@ nav ul li a::after {
   }
   
   .contact-container {
-    gap: clamp(20px, 4vh, 30px);
+    gap: clamp(30px, 5vh, 40px);
     padding: 0 clamp(8px, 2vw, 15px);
   }
   
@@ -1791,8 +1931,17 @@ nav ul li a::after {
   }
   
   #contact .contacts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: clamp(10px, 3vw, 18px);
-    flex-wrap: wrap;
+    padding: 10px 5px;
+  }
+  
+  #contact .contacts p {
+    padding: 6px 8px;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    width: 100%;
+    max-width: 100%;
   }
   
   .contacts img {
@@ -1826,9 +1975,22 @@ nav ul li a::after {
     padding: 5px 8px;
   }
   
+  .softskills-wrapper {
+    gap: clamp(6px, 1.2vw, 12px);
+  }
+  
+  .softskills-wrapper .cardy {
+    gap: clamp(6px, 1.2vw, 12px);
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  
   .softskills-container .card {
-    width: 140px;
+    width: calc((100% - 12px) / 2);
+    min-width: 110px;
+    max-width: 140px;
     height: 200px;
+    flex: 0 0 auto;
   }
   
   .techskill-item img {
@@ -1836,8 +1998,21 @@ nav ul li a::after {
     height: 35px;
   }
   
+  .certifications-grid {
+    gap: clamp(8px, 1.2vw, 12px);
+    flex-wrap: nowrap;
+    overflow: visible;
+  }
+  
   .certifications-grid .card {
-    width: 140px;
-    height: 200px;
+    width: 110px;
+    min-width: 110px;
+    height: 170px;
+    padding-bottom: clamp(8px, 1.5vh, 15px);
+    flex-shrink: 0;
+  }
+  
+  .certifications-grid .view-btn {
+    margin-bottom: clamp(3px, 0.8vh, 6px);
   }
 }

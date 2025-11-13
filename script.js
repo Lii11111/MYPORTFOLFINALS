@@ -114,17 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Clone items for infinite loop animation (Soft Skills)
-document.addEventListener("DOMContentLoaded", function () {
-  const softskillsCards = document.getElementById("softskillsCards");
-  const softskillsWrapper = document.querySelector(".softskills-wrapper");
-  
-  if (softskillsCards && softskillsWrapper) {
-    const clone = softskillsCards.cloneNode(true);
-    clone.setAttribute("aria-hidden", "true");
-    softskillsWrapper.appendChild(clone);
-  }
-});
 
 // Clone items for infinite loop animation (Technical Skills)
 document.addEventListener("DOMContentLoaded", function () {
