@@ -15,6 +15,66 @@ body {
   line-height: 1.6;
 }
 
+.back-button {
+  position: fixed;
+  top: clamp(20px, 3vh, 30px);
+  left: clamp(20px, 3vw, 30px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(10px, 1.5vh, 14px) clamp(18px, 2vw, 24px);
+  background: linear-gradient(135deg, #7d0a0a 0%, #3d0301 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 4px 15px rgba(125, 10, 10, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-button svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 6px 20px rgba(125, 10, 10, 0.4);
+  background: linear-gradient(135deg, #8d1a1a 0%, #4d0402 100%);
+}
+
+.back-button:hover svg {
+  transform: translateX(-3px);
+}
+
+.back-button:active {
+  transform: translateX(-3px) scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .back-button {
+    top: clamp(15px, 2vh, 20px);
+    left: clamp(15px, 2vw, 20px);
+    padding: clamp(8px, 1.2vh, 12px) clamp(14px, 1.5vw, 18px);
+    font-size: clamp(12px, 1.2vw, 14px);
+    gap: 8px;
+  }
+
+  .back-button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .back-button span {
+    display: none;
+  }
+}
+
 .t1 {
   width: 100%;
   padding: clamp(30px, 5vh, 50px) clamp(20px, 5vw, 40px);
