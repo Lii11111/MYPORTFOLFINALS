@@ -1188,21 +1188,31 @@ nav ul li a::after {
 }
 
 .send-button {
-  background: linear-gradient(135deg, #7d0a0a, #3d0301);
-  color: white;
-  border: none;
+  background: #ffffff;
+  color: #7d0a0a;
+  border: 1px solid rgba(125, 10, 10, 0.4);
   padding: 12px 22px;
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
   font-family: var(--fontfam);
-  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.3s ease;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
   position: relative;
   z-index: 1;
-  box-shadow: 0 10px 20px rgba(125,10,10,0.25);
+  box-shadow: 0 10px 20px rgba(125, 10, 10, 0.15);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
 }
 
-.send-button:hover { transform: translateY(-1px); box-shadow: 0 12px 24px rgba(0,0,0,0.28); }
+.send-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(125, 10, 10, 0.25);
+  background: #f8f0f0;
+  color: #3d0301;
+}
 /*-------------------- YOU CAN CONTACT ME HERE ---------------------*/
 .contact-info {
   display: flex;
@@ -1765,6 +1775,9 @@ nav ul li a::after {
     width: 100%;
     margin-top: 10px;
     box-sizing: border-box;
+    background: #ffffff;
+    color: #7d0a0a;
+    align-self: flex-end;
   }
   
   .contact-info {
@@ -2071,6 +2084,9 @@ nav ul li a::after {
   .send-button {
     font-size: clamp(0.8rem, 2.2vw, 0.95rem);
     padding: clamp(10px, 2vh, 14px) clamp(18px, 3.5vw, 24px);
+    background: #ffffff;
+    color: #7d0a0a;
+    align-self: flex-end;
   }
   
   #contact .ucan {
