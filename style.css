@@ -466,19 +466,19 @@ nav ul li a::after {
   overflow: hidden;
   text-decoration: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  backface-visibility: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease, filter 0.4s ease;
+  transform-origin: center;
+  will-change: transform, box-shadow;
 }
 
 .project-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.15);
+  z-index: 2;
 }
 
 .project-card.animated:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-4px) scale(1.015);
   filter: blur(0);
 }
 
@@ -1607,18 +1607,26 @@ nav ul li a::after {
   .project-card {
     width: 100%;
     max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding-bottom: 6px;
   }
   
   .project-image {
-    height: clamp(180px, 45vw, 220px);
+    height: clamp(130px, 35vw, 170px);
   }
   
+  .project-info {
+    padding: 10px 12px;
+  }
+
   .project-title {
-    font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
   }
   
   .project-description {
-    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+    font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+    line-height: 1.4;
   }
   
   /* Certifications */
@@ -1926,12 +1934,31 @@ nav ul li a::after {
   }
   
   .projects-grid {
-    gap: 20px;
+    gap: 16px;
     padding: 0 5px;
   }
   
+  .project-card {
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.07);
+    padding-bottom: 4px;
+  }
+
   .project-image {
-    height: clamp(160px, 50vw, 200px);
+    height: clamp(110px, 44vw, 150px);
+  }
+
+  .project-info {
+    padding: 8px 10px;
+  }
+
+  .project-title {
+    font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  }
+
+  .project-description {
+    font-size: clamp(0.65rem, 2.6vw, 0.8rem);
+    line-height: 1.35;
   }
   
   .certifications-container {
@@ -2081,6 +2108,27 @@ nav ul li a::after {
     max-width: 140px;
     height: 200px;
     flex: 0 0 auto;
+  }
+
+  .projects-grid {
+    gap: 14px;
+    padding: 0 4px;
+  }
+
+  .project-card {
+    border-radius: 9px;
+  }
+
+  .project-image {
+    height: clamp(100px, 42vw, 130px);
+  }
+
+  .project-info {
+    padding: 7px 9px;
+  }
+
+  .project-description {
+    font-size: clamp(0.62rem, 2.4vw, 0.78rem);
   }
   
   .techskill-item img {
