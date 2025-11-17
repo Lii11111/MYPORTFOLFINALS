@@ -723,10 +723,111 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Close modal on Escape key
+         // Close modal on Escape key
+         document.addEventListener('keydown', function(e) {
+           if (e.key === 'Escape' && skillEditModal && skillEditModal.style.display === 'flex') {
+             closeSkillEditModal();
+           }
+         });
+       });
+
+// Next Arrow Button - Page Transition
+document.addEventListener('DOMContentLoaded', function() {
+  const nextArrowBtn = document.getElementById('nextArrowBtn');
+  const prevArrowBtn = document.getElementById('prevArrowBtn');
+  const aboutSection = document.getElementById('aboutSection');
+  const hobbiesPage = document.getElementById('hobbiesPage');
+  const ANIMATION_DURATION = 600;
+
+  if (!aboutSection || !hobbiesPage) return;
+
+  function triggerAnimation(element, className) {
+    element.classList.remove(className);
+    // Force reflow to restart animation
+    void element.offsetWidth;
+    element.classList.add(className);
+
+    setTimeout(() => {
+      element.classList.remove(className);
+    }, ANIMATION_DURATION);
+  }
+
+  function showHobbies() {
+    triggerAnimation(aboutSection, 'exit-animation');
+
+    setTimeout(() => {
+      aboutSection.style.display = 'none';
+      hobbiesPage.style.display = 'block';
+      triggerAnimation(hobbiesPage, 'enter-animation');
+      hobbiesPage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, ANIMATION_DURATION);
+  }
+
+  function showAbout() {
+    hobbiesPage.style.display = 'none';
+    aboutSection.style.display = 'grid';
+    triggerAnimation(aboutSection, 'enter-animation');
+    aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  if (nextArrowBtn) {
+    nextArrowBtn.addEventListener('click', showHobbies);
+  }
+
+  if (prevArrowBtn) {
+    prevArrowBtn.addEventListener('click', showAbout);
+  }
+});
+
+// Music Favorites Modal
+document.addEventListener('DOMContentLoaded', function() {
+  const showMoreBtn = document.getElementById('showMoreMusic');
+  const musicModal = document.getElementById('musicFavoritesModal');
+  const closeBtn = document.getElementById('musicFavoritesClose');
+
+  function preventBodyScroll() {
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  function restoreBodyScroll() {
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+  }
+
+  function openMusicModal() {
+    if (musicModal) {
+      musicModal.style.display = 'flex';
+      preventBodyScroll();
+    }
+  }
+
+  function closeMusicModal() {
+    if (musicModal) {
+      musicModal.style.display = 'none';
+      restoreBodyScroll();
+    }
+  }
+
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', openMusicModal);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeMusicModal);
+  }
+
+  if (musicModal) {
+    musicModal.addEventListener('click', function(e) {
+      if (e.target === musicModal) {
+        closeMusicModal();
+      }
+    });
+  }
+
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && skillEditModal && skillEditModal.style.display === 'flex') {
-      closeSkillEditModal();
+    if (e.key === 'Escape' && musicModal && musicModal.style.display === 'flex') {
+      closeMusicModal();
     }
   });
 });
