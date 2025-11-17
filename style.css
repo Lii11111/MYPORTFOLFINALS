@@ -480,7 +480,7 @@ nav ul li a::after {
   overflow: visible;
 }
 
-.projects-grid > .project-card a.project-card {
+.projects-grid > .project-card .project-card {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -492,17 +492,6 @@ nav ul li a::after {
   text-decoration: none;
   border: 1px solid rgba(61, 3, 1, 0.08);
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.projects-grid > .project-card a.project-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 24px 45px rgba(61, 3, 1, 0.15);
-  z-index: 2;
-}
-
-.projects-grid > .project-card a.project-card:hover .project-image {
-  transform: scale(1.01);
 }
 
 .project-image {
@@ -511,11 +500,93 @@ nav ul li a::after {
   object-fit: cover;
   display: block;
   border-radius: 20px 20px 0 0;
-  transition: transform 0.3s ease;
 }
 
 .project-info {
   padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+/* View Project Button */
+.button2 {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #090909;
+  padding: 0.5em 1.3em;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  box-shadow: 
+    6px 6px 12px #c5c5c5,
+    -6px -6px 12px #ffffff,
+    -4px -4px 8px rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  text-align: center;
+  font-family: var(--fontfam);
+  font-weight: 500;
+  width: fit-content;
+  margin-top: auto;
+  align-self: center;
+}
+
+.button2:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.button2:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:hover {
+  color: #ffffff;
+  border: 1px solid var(--primary);
+}
+
+.button2:hover:before {
+  top: -35%;
+  background-color: var(--primary);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2:hover:after {
+  top: -45%;
+  background-color: var(--primary);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
 .project-title {
@@ -843,8 +914,10 @@ nav ul li a::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9); /* Dark overlay */
-  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85); /* Semi-transparent dark overlay - more opaque to hide content */
+  backdrop-filter: blur(15px); /* Blurry glass effect - stronger blur */
+  -webkit-backdrop-filter: blur(15px); /* Safari support */
+  z-index: 99999;
   align-items: center;
   justify-content: center;
 }
@@ -853,6 +926,8 @@ nav ul li a::after {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
+  position: relative;
+  z-index: 10001;
 }
 
 .close-btn {
@@ -863,6 +938,7 @@ nav ul li a::after {
   font-size: 35px;
   font-weight: bold;
   cursor: pointer;
+  z-index: 10001;
 }
 
 .close-btn:hover {
@@ -902,6 +978,8 @@ nav ul li a::after {
   padding-top: 30px;
   padding-bottom: 40px;
   width: 100%;
+  position: relative;
+  z-index: 1;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -922,6 +1000,8 @@ nav ul li a::after {
   grid-template-rows: auto;
   width: 100%;
   max-width: 1200px;
+  position: relative;
+  z-index: 1;
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 40px);
   gap: clamp(40px, 6vw, 80px);
@@ -1136,6 +1216,7 @@ nav ul li a::after {
   max-width: 600px;
   min-width: 400px;
   box-sizing: border-box;
+  z-index: 1;
 }
 .message-box::before,
 .message-box::after {
@@ -1221,33 +1302,6 @@ nav ul li a::after {
   margin-left: 2vw;
 }
 
-.contacts p {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  white-space: nowrap;
-}
-#contact .contacts a {
-  text-decoration: none;
-  color: var(--primary);
-}
-
-#contact .contacts img {
-  width: clamp(30px, 4vw, 40px);
-  height: clamp(30px, 4vw, 40px);
-  vertical-align: middle;
-  flex-shrink: 0;
-  object-fit: contain;
-}
-
-#contact .contacts img {
-  transition: transform 0.3s ease-in-out;
-}
-
-#contact .contacts img:hover {
-  transform: scale(1.2); /* Makes the image bigger on hover */
-}
 
 #contact .ucan {
   display: flex;
@@ -1266,6 +1320,7 @@ nav ul li a::after {
   width: 100%;
   max-width: min(900px, calc(100vw - clamp(40px, 8vw, 80px)));
   overflow: visible;
+  z-index: 1;
 }
 #contact .ucan h4 {
   font-weight: 400;
@@ -1278,38 +1333,202 @@ nav ul li a::after {
   margin-top: 0;
 }
 #contact .contacts {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-  justify-items: center;
-  width: 100%;
-  padding: 10px 0;
-  gap: clamp(10px, 2vw, 20px);
-  box-sizing: border-box;
-}
-#contact .contacts p {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  margin: 0;
-  padding: 6px 8px;
-  color: var(--primary);
   width: 100%;
-  max-width: 100%;
-  text-align: center;
-  white-space: nowrap;
-  overflow: visible;
-  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  padding: 10px 0;
+  gap: clamp(15px, 3vw, 25px);
   box-sizing: border-box;
-  min-width: fit-content;
+  flex-wrap: wrap;
 }
-#contact .contacts p a {
-  display: inline-flex;
+
+/* Circular Contact Buttons */
+.contact-btn {
+  padding: clamp(15px, 2.5vw, 20px);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  white-space: nowrap;
+  justify-content: center;
+  text-decoration: none;
+  width: clamp(60px, 10vw, 80px);
+  height: clamp(60px, 10vw, 80px);
+  min-width: clamp(60px, 10vw, 80px);
+  min-height: clamp(60px, 10vw, 80px);
 }
+
+.contact-btn:hover {
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  transform: scale(1.1) rotate(3deg);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-btn:active {
+  transform: scale(0.95) rotate(0deg);
+}
+
+.contact-btn:focus {
+  outline: none;
+}
+
+/* Shine effect */
+.contact-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.7s ease-out;
+}
+
+.contact-btn:hover .contact-shine {
+  transform: translateX(100%);
+}
+
+.contact-icon-wrapper {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-icon {
+  width: clamp(24px, 4vw, 32px);
+  height: clamp(24px, 4vw, 32px);
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
+}
+
+/* Email Button - White/Gray */
+.contact-email {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.contact-email:hover {
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.4));
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-email:hover .contact-icon {
+  opacity: 0.9;
+}
+
+.contact-email .contact-shine {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* Facebook Button - Blue */
+.contact-facebook {
+  border-color: rgba(24, 119, 242, 0.2);
+}
+
+.contact-facebook:hover {
+  box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);
+  background: linear-gradient(135deg, rgba(24, 119, 242, 0.1), rgba(0, 0, 0, 0.4));
+  border-color: rgba(24, 119, 242, 0.5);
+  transform: scale(1.1) rotate(2deg);
+}
+
+.contact-facebook:hover .contact-icon {
+  filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(200deg);
+}
+
+.contact-facebook .contact-shine {
+  background: linear-gradient(90deg, transparent, rgba(24, 119, 242, 0.2), transparent);
+}
+
+/* Phone Button - Green */
+.contact-phone {
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.contact-phone:hover {
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(0, 0, 0, 0.4));
+  border-color: rgba(34, 197, 94, 0.5);
+  transform: scale(1.1) rotate(-2deg);
+}
+
+.contact-phone:hover .contact-icon {
+  filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(90deg);
+}
+
+.contact-phone .contact-shine {
+  background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.2), transparent);
+}
+
+/* LinkedIn Button - Blue */
+.contact-linkedin {
+  border-color: rgba(0, 119, 181, 0.2);
+}
+
+.contact-linkedin:hover {
+  box-shadow: 0 8px 20px rgba(0, 119, 181, 0.3);
+  background: linear-gradient(135deg, rgba(0, 119, 181, 0.1), rgba(0, 0, 0, 0.4));
+  border-color: rgba(0, 119, 181, 0.5);
+  transform: scale(1.1) rotate(2deg);
+}
+
+.contact-linkedin:hover .contact-icon {
+  filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(180deg);
+}
+
+.contact-linkedin .contact-shine {
+  background: linear-gradient(90deg, transparent, rgba(0, 119, 181, 0.2), transparent);
+}
+
+/* Contact Tooltips */
+.contact-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+  z-index: 1000;
+  font-family: var(--fontfam);
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.contact-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+.contact-btn:hover .contact-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
 .scroll-top {
   position: fixed;
   bottom: 30px;
@@ -1324,7 +1543,7 @@ nav ul li a::after {
     0 2px 6px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1000;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1387,13 +1606,20 @@ nav ul li a::after {
   }
   
   #contact .contacts {
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(15px, 3vw, 25px);
+    gap: clamp(12px, 2.5vw, 20px);
   }
   
-  #contact .contacts p {
-    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
-    padding: 8px 10px;
+  .contact-btn {
+    width: clamp(55px, 9vw, 75px);
+    height: clamp(55px, 9vw, 75px);
+    min-width: clamp(55px, 9vw, 75px);
+    min-height: clamp(55px, 9vw, 75px);
+    padding: clamp(12px, 2vw, 18px);
+  }
+  
+  .contact-icon {
+    width: clamp(22px, 3.5vw, 28px);
+    height: clamp(22px, 3.5vw, 28px);
   }
 }
 
@@ -1403,6 +1629,11 @@ nav ul li a::after {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding: 0 20px;
+  }
+  
+  .button2 {
+    font-size: 16px;
+    padding: 0.6em 1.5em;
   }
   
   .certifications-grid {
@@ -1427,13 +1658,20 @@ nav ul li a::after {
   }
   
   #contact .contacts {
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(12px, 2.5vw, 20px);
+    gap: clamp(10px, 2vw, 18px);
   }
   
-  #contact .contacts p {
-    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
-    padding: 8px 10px;
+  .contact-btn {
+    width: clamp(50px, 8vw, 70px);
+    height: clamp(50px, 8vw, 70px);
+    min-width: clamp(50px, 8vw, 70px);
+    min-height: clamp(50px, 8vw, 70px);
+    padding: clamp(10px, 1.8vw, 16px);
+  }
+  
+  .contact-icon {
+    width: clamp(20px, 3vw, 26px);
+    height: clamp(20px, 3vw, 26px);
   }
 }
 
@@ -1443,6 +1681,11 @@ nav ul li a::after {
     height: clamp(4rem, 12vh, 5rem);
     top: -2.5vh;
     left: 1vw;
+  }
+
+  .button2 {
+    font-size: 14px;
+    padding: 0.5em 1.3em;
   }
 
   nav ul {
@@ -1815,35 +2058,22 @@ nav ul li a::after {
     padding: 10px 5px;
   }
   
-  #contact .contacts p {
-    margin: 0;
-    width: 100%;
-    max-width: 100%;
-    padding: 8px 10px;
-    font-size: clamp(0.8rem, 2vw, 0.95rem);
-    justify-content: center;
+  #contact .contacts {
+    gap: clamp(8px, 1.8vw, 15px);
+    flex-wrap: wrap;
   }
   
-  .contacts img {
-    width: clamp(32px, 7vw, 42px);
-    height: clamp(32px, 7vw, 42px);
-    flex-shrink: 0;
+  .contact-btn {
+    width: clamp(65px, 12vw, 85px);
+    height: clamp(65px, 12vw, 85px);
+    min-width: clamp(65px, 12vw, 85px);
+    min-height: clamp(65px, 12vw, 85px);
+    padding: clamp(12px, 2.5vw, 18px);
   }
   
-  #contact .contacts a {
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  #contact .contacts p:not(:has(a)) {
-    color: var(--primary);
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .contact-icon {
+    width: clamp(28px, 5vw, 36px);
+    height: clamp(28px, 5vw, 36px);
   }
   
     .loader {
@@ -1870,6 +2100,11 @@ nav ul li a::after {
   .logo {
     height: clamp(3rem, 10vh, 4rem);
     left: 0.5vw;
+  }
+  
+  .button2 {
+    font-size: clamp(12px, 3vw, 14px);
+    padding: 0.5em 1.2em;
   }
   
   nav ul {
@@ -2106,21 +2341,22 @@ nav ul li a::after {
     padding: 10px 5px;
   }
   
-  #contact .contacts p {
-    padding: 6px 8px;
-    font-size: clamp(0.75rem, 2vw, 0.9rem);
-    width: 100%;
-    max-width: 100%;
+  #contact .contacts {
+    gap: clamp(6px, 1.5vw, 12px);
+    flex-wrap: wrap;
   }
   
-  .contacts img {
-    width: clamp(28px, 6.5vw, 38px);
-    height: clamp(28px, 6.5vw, 38px);
+  .contact-btn {
+    width: clamp(60px, 11vw, 80px);
+    height: clamp(60px, 11vw, 80px);
+    min-width: clamp(60px, 11vw, 80px);
+    min-height: clamp(60px, 11vw, 80px);
+    padding: clamp(10px, 2.2vw, 16px);
   }
   
-  #contact .contacts a,
-  #contact .contacts p:not(:has(a)) {
-    font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+  .contact-icon {
+    width: clamp(26px, 4.5vw, 34px);
+    height: clamp(26px, 4.5vw, 34px);
   }
   
   .scroll-top {

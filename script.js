@@ -4,22 +4,48 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalImg = document.querySelector(".modal-image");
   const closeBtn = document.querySelector(".close-modal");
 
+  // Function to prevent body scroll when modal is open
+  function preventBodyScroll() {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+  }
+
+  // Function to restore body scroll when modal is closed
+  function restoreBodyScroll() {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+
   if (images.length && modal && modalImg && closeBtn) {
     images.forEach((img) => {
       img.addEventListener("click", () => {
         modal.style.display = "flex";
         modalImg.src = img.src;
+        preventBodyScroll(); // Prevent scrolling when modal opens
       });
     });
 
     closeBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       modal.style.display = "none";
+      restoreBodyScroll(); // Restore scrolling when modal closes
     });
   }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Function to prevent body scroll when modal is open
+  function preventBodyScroll() {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+  }
+
+  // Function to restore body scroll when modal is closed
+  function restoreBodyScroll() {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+
   // Handle both image clicks and button clicks
   document
     .querySelectorAll(".clickable-image, .view-btn")
@@ -34,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modal.style.display = "flex";
         modal.querySelector(".modal-content").src = imgSrc;
+        preventBodyScroll(); // Prevent scrolling when modal opens
       });
     });
 
@@ -41,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".close-btn").forEach((btn) => {
     btn.addEventListener("click", function () {
       this.closest(".modal").style.display = "none";
+      restoreBodyScroll(); // Restore scrolling when modal closes
     });
   });
 
@@ -49,8 +77,21 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.addEventListener("click", function (e) {
       if (e.target === this) {
         this.style.display = "none";
+        restoreBodyScroll(); // Restore scrolling when modal closes
       }
     });
+  });
+
+  // Close modal on Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".modal").forEach((modal) => {
+        if (modal.style.display === "flex" || modal.style.display === "block") {
+          modal.style.display = "none";
+          restoreBodyScroll(); // Restore scrolling when modal closes
+        }
+      });
+    }
   });
 });
 // Project Images Slider (Static, no cloning)
@@ -62,27 +103,47 @@ document.addEventListener("DOMContentLoaded", function () {
   const captionText = document.getElementById("caption");
   const closeBtn = document.querySelector(".close");
 
+  // Function to prevent body scroll when modal is open
+  function preventBodyScroll() {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+  }
+
+  // Function to restore body scroll when modal is closed
+  function restoreBodyScroll() {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+
   document.querySelectorAll(".slider-item img").forEach((img) => {
     img.addEventListener("click", function () {
       if (!modal || !modalImg) return;
       modal.style.display = "block";
       modalImg.src = this.src;
       if (captionText) captionText.innerHTML = this.alt || "Project Image";
+      preventBodyScroll(); // Prevent scrolling when modal opens
     });
   });
   
   if (closeBtn) {
     closeBtn.onclick = function () { 
-      if (modal) modal.style.display = "none"; 
+      if (modal) modal.style.display = "none";
+      restoreBodyScroll(); // Restore scrolling when modal closes
     };
   }
   
   window.onclick = function (event) { 
-    if (event.target == modal && modal) modal.style.display = "none"; 
+    if (event.target == modal && modal) {
+      modal.style.display = "none";
+      restoreBodyScroll(); // Restore scrolling when modal closes
+    }
   };
   
   document.addEventListener("keydown", function (event) { 
-    if (event.key === "Escape" && modal) modal.style.display = "none"; 
+    if (event.key === "Escape" && modal && (modal.style.display === "block" || modal.style.display === "flex")) {
+      modal.style.display = "none";
+      restoreBodyScroll(); // Restore scrolling when modal closes
+    }
   });
 });
 // (Removed redundant global modal handlers to avoid ReferenceErrors)
@@ -149,4 +210,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const animateElements = document.querySelectorAll('.scroll-animate');
   animateElements.forEach(el => observer.observe(el));
 });
+
+// Copy phone number function
+function copyPhoneNumber() {
+  const phoneNumber = '09 851 792 940';
+  navigator.clipboard.writeText(phoneNumber).then(() => {
+    // Optional: Show a notification
+    alert('Phone number copied to clipboard: ' + phoneNumber);
+  }).catch(err => {
+    console.error('Failed to copy phone number:', err);
+    // Fallback for older browsers
+    const textArea = document.createElement('textarea');
+    textArea.value = phoneNumber;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      alert('Phone number copied to clipboard: ' + phoneNumber);
+    } catch (err) {
+      console.error('Fallback copy failed:', err);
+    }
+    document.body.removeChild(textArea);
+  });
+}
 
