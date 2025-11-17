@@ -301,3 +301,56 @@ function copyPhoneNumber() {
   });
 }
 
+// Theme Picker Functionality
+(function() {
+  const themeToggle = document.getElementById('themeToggle');
+  const themePicker = document.querySelector('.theme-picker');
+  const themeOptions = document.querySelectorAll('.theme-option');
+  
+  if (!themeToggle || !themePicker) return;
+  
+  // Load saved theme or default to maroon
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'maroon';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  // Set active theme button
+  themeOptions.forEach(option => {
+    if (option.getAttribute('data-theme') === savedTheme) {
+      option.classList.add('active');
+    }
+  });
+  
+  // Toggle theme picker
+  themeToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    themePicker.classList.toggle('active');
+  });
+  
+  // Close theme picker when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!themePicker.contains(e.target)) {
+      themePicker.classList.remove('active');
+    }
+  });
+  
+  // Handle theme selection
+  themeOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      const selectedTheme = this.getAttribute('data-theme');
+      
+      // Update theme
+      document.documentElement.setAttribute('data-theme', selectedTheme);
+      
+      // Save to localStorage
+      localStorage.setItem('portfolio-theme', selectedTheme);
+      
+      // Update active state
+      themeOptions.forEach(opt => opt.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Close picker
+      themePicker.classList.remove('active');
+    });
+  });
+})();
+

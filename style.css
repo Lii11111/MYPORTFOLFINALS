@@ -38,8 +38,178 @@ header {
 /*--------------------------------ROOOOOOOT------------------------------*/
 :root {
   --primary: #3d0301;
+  --primary-light: #7d0a0a;
   --secondary: white;
   --fontfam: "Poppins", sans-serif;
+}
+
+/* Theme Colors */
+:root[data-theme="maroon"] {
+  --primary: #3d0301;
+  --primary-light: #7d0a0a;
+}
+
+:root[data-theme="black"] {
+  --primary: #1a1a1a;
+  --primary-light: #2a2a2a;
+}
+
+:root[data-theme="blue"] {
+  --primary: #1e40af;
+  --primary-light: #2563eb;
+}
+
+:root[data-theme="red"] {
+  --primary: #b91c1c;
+  --primary-light: #dc2626;
+}
+
+:root[data-theme="green"] {
+  --primary: #15803d;
+  --primary-light: #16a34a;
+}
+
+:root[data-theme="brown"] {
+  --primary: #78350f;
+  --primary-light: #a16207;
+}
+
+:root[data-theme="violet"] {
+  --primary: #7e22ce;
+  --primary-light: #9333ea;
+}
+
+:root[data-theme="orange"] {
+  --primary: #c2410c;
+  --primary-light: #ea580c;
+}
+
+:root[data-theme="purple"] {
+  --primary: #6d28d9;
+  --primary-light: #7c3aed;
+}
+
+:root[data-theme="teal"] {
+  --primary: #0d9488;
+  --primary-light: #14b8a6;
+}
+
+:root[data-theme="dark-blue"] {
+  --primary: #1e293b;
+  --primary-light: #1e3a8a;
+}
+
+:root[data-theme="dark-green"] {
+  --primary: #0f2027;
+  --primary-light: #14532d;
+}
+
+:root[data-theme="dark-red"] {
+  --primary: #7f1d1d;
+  --primary-light: #991b1b;
+}
+
+:root[data-theme="dark-purple"] {
+  --primary: #4c1d95;
+  --primary-light: #581c87;
+}
+
+:root[data-theme="dark-teal"] {
+  --primary: #0f766e;
+  --primary-light: #134e4a;
+}
+
+:root[data-theme="dark-orange"] {
+  --primary: #7c2d12;
+  --primary-light: #9a3412;
+}
+
+/*--------------------------------THEME PICKER------------------------------*/
+.theme-picker {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    padding-right: 70px; /* Space for theme picker */
+  }
+}
+
+.theme-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.theme-options {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 280px;
+}
+
+.theme-picker.active .theme-options {
+  display: flex;
+}
+
+.theme-option {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.theme-option:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.theme-option.active {
+  border: 3px solid var(--primary);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.theme-option.active::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /*--------------------------------SCROLL ANIMATIONS------------------------------*/
@@ -103,6 +273,7 @@ nav ul {
   justify-content: flex-end;
   padding: 15px 10px;
   padding-bottom: 10px;
+  padding-right: 80px; /* Add space for theme picker */
   z-index: 1000;
   margin: 0;
 }
@@ -115,11 +286,11 @@ nav ul li a {
   font-family: "Manrope", sans-serif;
   display: inline-block;
   padding: 0.8vw 1.5vw;
-  background: linear-gradient(135deg, #7d0a0a 0%, #3d0301 100%);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(61, 3, 1, 0.3);
-  box-shadow: 0 4px 16px 0 rgba(61, 3, 1, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   text-decoration: none;
   position: relative;
@@ -130,9 +301,9 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background: linear-gradient(135deg, #3d0301 0%, #7d0a0a 100%);
-  border: 1px solid rgba(61, 3, 1, 0.5);
-  box-shadow: 0 6px 20px 0 rgba(61, 3, 1, 0.4);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
 }
 
@@ -143,7 +314,7 @@ nav ul li a::after {
   bottom: -3px;
   width: 100%;
   height: 3px;
-  background-color: #7d0a0a;
+  background-color: var(--primary-light);
   transform: scaleX(0);
   transition: transform 0.2s ease-in-out;
   display: none;
@@ -175,7 +346,7 @@ nav ul li a::after {
   text-align: center;
 }
 .name1 {
-  color: #7d0a0a;
+  color: var(--primary-light);
   font-size: 3rem;
   font-weight: 600;
   display: inline-block;
@@ -276,7 +447,7 @@ nav ul li a::after {
     0 0 0 2px rgba(255, 255, 255, 0.15),
     inset 0 0 40px rgba(255, 255, 255, 0.15);
   filter: brightness(1.1) contrast(1.15);
-  border-color: #7d0a0a;
+  border-color: var(--primary-light);
 }
 
 @keyframes float {
@@ -310,7 +481,7 @@ nav ul li a::after {
   padding: 10px 20px;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
-  background-color: #7d0a0a;
+  background-color: var(--primary-light);
   color: white;
   border: none;
   border-radius: 5px;
@@ -325,7 +496,7 @@ nav ul li a::after {
 }
 /*--------------------------------SKILLS SECTION PART-------------------------------*/
 #skills {
-  background-color: #3d0301;
+  background-color: var(--primary);
   min-height: 100vh;
   height: auto;
   padding-top: clamp(30px, 6vh, 60px);
@@ -487,7 +658,7 @@ nav ul li a::after {
   border-radius: 8px;
 }
 .softskills1 p:hover {
-  background-color: #3d0301;
+  background-color: var(--primary);
   backdrop-filter: blur(5px); /* Blurry effect */
   transition: 0.3s ease-in-out;
   color: white;
@@ -572,7 +743,7 @@ nav ul li a::after {
   font-weight: 600;
   font-style: italic;
   color: white;
-  background: linear-gradient(135deg, var(--primary) 0%, #7d0a0a 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   cursor: pointer;
@@ -581,7 +752,7 @@ nav ul li a::after {
 }
 
 .progress-btn:hover {
-  background: linear-gradient(135deg, #7d0a0a 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(61, 3, 1, 0.4);
   border-color: rgba(255, 255, 255, 0.3);
@@ -713,7 +884,7 @@ nav ul li a::after {
 }
 
 .progress-modal-close:hover {
-  color: #7d0a0a;
+  color: var(--primary-light);
   transform: scale(1.1);
 }
 
@@ -748,7 +919,7 @@ nav ul li a::after {
   font-size: clamp(1rem, 1.5vw, 1.1rem);
   font-weight: 600;
   color: white;
-  background: linear-gradient(135deg, var(--primary) 0%, #7d0a0a 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   cursor: pointer;
@@ -760,7 +931,7 @@ nav ul li a::after {
 }
 
 .progress-modal-exit-btn:hover {
-  background: linear-gradient(135deg, #7d0a0a 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(61, 3, 1, 0.4);
   border-color: rgba(255, 255, 255, 0.3);
@@ -786,7 +957,7 @@ nav ul li a::after {
   justify-content: center;
   font-size: 1.5rem;
   font-family: "Poppins", sans-serif;
-  color: #3d0301;
+  color: var(--primary);
   font-weight: -10;
   font-size: 2.5rem;
   margin-bottom: 20px;
@@ -975,7 +1146,7 @@ nav ul li a::after {
   justify-content: center;
   font-size: 1.5rem;
   font-family: "Poppins", sans-serif;
-  color: #3d0301;
+  color: var(--primary);
   font-weight: -10;
   font-size: 2.5rem;
   margin-bottom: 30px;
@@ -1038,7 +1209,7 @@ nav ul li a::after {
   font-family: var(--fontfam);
   font-weight: 500;
   font-size: clamp(0.75rem, 2vw, 1.1rem);
-  color: #3d0301;
+  color: var(--primary);
   text-align: center;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -1575,7 +1746,7 @@ nav ul li a::after {
   position: absolute;
   width: 220px;
   height: 220px;
-  background: radial-gradient(closest-side, rgba(189,28,28,0.35), rgba(189,28,28,0) 70%);
+  background: transparent;
   filter: blur(8px);
   border-radius: 50%;
   z-index: 0;
@@ -1621,7 +1792,7 @@ nav ul li a::after {
 
 .send-button {
   background: #ffffff;
-  color: #7d0a0a;
+  color: var(--primary-light);
   border: 1px solid rgba(125, 10, 10, 0.4);
   padding: 12px 22px;
   border-radius: 10px;
@@ -1643,7 +1814,7 @@ nav ul li a::after {
   transform: translateY(-1px);
   box-shadow: 0 12px 24px rgba(125, 10, 10, 0.25);
   background: #f8f0f0;
-  color: #3d0301;
+  color: var(--primary);
 }
 /*-------------------- YOU CAN CONTACT ME HERE ---------------------*/
 .contact-info {
@@ -1884,7 +2055,7 @@ nav ul li a::after {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: linear-gradient(135deg, #7d0a0a 0%, #3d0301 100%);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
   padding: 12px;
   border-radius: 50%;
   text-decoration: none;
@@ -1911,7 +2082,7 @@ nav ul li a::after {
 }
 
 .scroll-top:hover {
-  background: linear-gradient(135deg, #3d0301 0%, #7d0a0a 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   transform: translateY(-5px) scale(1.05);
   box-shadow: 
     0 8px 20px rgba(61, 3, 1, 0.5),
@@ -2040,6 +2211,7 @@ nav ul li a::after {
   }
 
   nav ul {
+    padding-right: 70px; /* Space for theme picker */
     padding: 10px 5px;
     flex-wrap: wrap;
     justify-content: center;
@@ -2407,7 +2579,7 @@ nav ul li a::after {
     margin-top: 10px;
     box-sizing: border-box;
     background: #ffffff;
-    color: #7d0a0a;
+    color: var(--primary-light);
     align-self: flex-end;
   }
   
@@ -2492,6 +2664,7 @@ nav ul li a::after {
   }
   
   nav ul {
+    padding-right: 70px; /* Space for theme picker */
     padding: 8px 2px;
   }
   
@@ -2751,7 +2924,7 @@ nav ul li a::after {
     font-size: clamp(0.8rem, 2.2vw, 0.95rem);
     padding: clamp(10px, 2vh, 14px) clamp(18px, 3.5vw, 24px);
     background: #ffffff;
-    color: #7d0a0a;
+    color: var(--primary-light);
     align-self: flex-end;
   }
   
