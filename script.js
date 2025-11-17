@@ -764,10 +764,26 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function showAbout() {
+    // Hide hobbies page first
     hobbiesPage.style.display = 'none';
-    aboutSection.style.display = 'grid';
-    triggerAnimation(aboutSection, 'enter-animation');
-    aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    // Reset about section completely - remove all animation classes and inline styles
+    aboutSection.classList.remove('exit-animation', 'enter-animation');
+    
+    // Reset all inline styles that might have been set by animations
+    aboutSection.style.cssText = '';
+    
+    // Force reflow to ensure reset
+    void aboutSection.offsetWidth;
+    
+    // Show about section (it should use its default CSS display: grid)
+    aboutSection.style.display = '';
+    
+    // Small delay to ensure display is set before animation
+    setTimeout(() => {
+      triggerAnimation(aboutSection, 'enter-animation');
+      aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 10);
   }
 
   if (nextArrowBtn) {
