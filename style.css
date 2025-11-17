@@ -2178,17 +2178,21 @@ nav ul li a::after {
   }
   
   .softskills-container .card {
-    width: calc((100% - 15px) / 2);
-    min-width: 140px;
-    max-width: 200px;
-    height: clamp(220px, 55vw, 280px);
-    padding: 12px;
+    width: calc((100% - 30px) / 3);
+    min-width: 100px;
+    max-width: 130px;
+    height: clamp(200px, 40vw, 250px);
+    padding: 10px;
     flex: 0 0 auto;
   }
   
   .softskills-container .card img {
-    width: clamp(50px, 15vw, 70px);
-    height: clamp(50px, 15vw, 70px);
+    width: clamp(45px, 10vw, 60px);
+    height: clamp(45px, 10vw, 60px);
+  }
+  
+  .softskills-container .card p {
+    font-size: clamp(0.7rem, 1.8vw, 0.85rem);
   }
   
   .techskill-item img {
