@@ -1814,21 +1814,21 @@ nav ul li a::after {
   }
   
   .softskills-container .card {
-    width: calc((100% - 20px) / 2);
-    min-width: 160px;
-    max-width: 220px;
-    height: clamp(250px, 50vw, 320px);
-    padding: 15px;
+    width: calc((100% - 40px) / 3);
+    min-width: 100px;
+    max-width: 140px;
+    height: clamp(200px, 40vw, 250px);
+    padding: 12px;
     flex: 0 0 auto;
   }
   
   .softskills-container .card img {
-    width: clamp(60px, 12vw, 80px);
-    height: clamp(60px, 12vw, 80px);
+    width: clamp(45px, 10vw, 60px);
+    height: clamp(45px, 10vw, 60px);
   }
   
   .softskills-container .card p {
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
   }
   
   .techskills h2 {
@@ -2385,11 +2385,20 @@ nav ul li a::after {
   }
   
   .softskills-container .card {
-    width: calc((100% - 12px) / 2);
-    min-width: 110px;
-    max-width: 140px;
-    height: 200px;
+    width: calc((100% - 24px) / 3);
+    min-width: 90px;
+    max-width: 120px;
+    height: clamp(180px, 35vw, 220px);
     flex: 0 0 auto;
+  }
+  
+  .softskills-container .card img {
+    width: clamp(40px, 8vw, 55px);
+    height: clamp(40px, 8vw, 55px);
+  }
+  
+  .softskills-container .card p {
+    font-size: clamp(0.7rem, 1.8vw, 0.85rem);
   }
 
   .projects-grid {
