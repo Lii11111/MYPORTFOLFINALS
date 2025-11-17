@@ -211,6 +211,73 @@ document.addEventListener("DOMContentLoaded", function () {
   animateElements.forEach(el => observer.observe(el));
 });
 
+// Skills Progress Bars Animation
+document.addEventListener("DOMContentLoaded", function () {
+  function animateProgressBars(container) {
+    const progressBars = container.querySelectorAll('.skill-progress-fill');
+    progressBars.forEach(bar => {
+      const percentage = bar.getAttribute('data-percentage');
+      bar.style.width = '0%';
+      setTimeout(() => {
+        bar.style.width = percentage + '%';
+      }, 100);
+    });
+  }
+
+  // Function to close progress modal
+  function closeProgressModal() {
+    const progressModal = document.getElementById('progressModal');
+    if (progressModal) {
+      progressModal.style.display = 'none';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+  }
+
+  // Progress Modal Functionality
+  const progressBtn = document.getElementById('progressBtn');
+  const progressModal = document.getElementById('progressModal');
+  const progressModalClose = document.querySelector('.progress-modal-close');
+  const progressModalExitBtn = document.querySelector('.progress-modal-exit-btn');
+
+  if (progressBtn && progressModal) {
+    progressBtn.addEventListener('click', function() {
+      progressModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      
+      // Animate progress bars when modal opens
+      setTimeout(() => {
+        animateProgressBars(progressModal);
+      }, 200);
+    });
+  }
+
+  if (progressModalClose) {
+    progressModalClose.addEventListener('click', closeProgressModal);
+  }
+
+  if (progressModalExitBtn) {
+    progressModalExitBtn.addEventListener('click', closeProgressModal);
+  }
+
+  // Close modal when clicking outside
+  if (progressModal) {
+    progressModal.addEventListener('click', function(e) {
+      if (e.target === progressModal) {
+        closeProgressModal();
+      }
+    });
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && progressModal && progressModal.style.display === 'flex') {
+      closeProgressModal();
+    }
+  });
+});
+
 // Copy phone number function
 function copyPhoneNumber() {
   const phoneNumber = '09 851 792 940';

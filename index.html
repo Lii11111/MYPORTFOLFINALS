@@ -155,8 +155,301 @@
         </div>
           </div>
         </div>
+        
+        <!-- Progress Button -->
+        <div class="progress-btn-wrapper scroll-animate animate-up">
+          <svg class="progress-arrow progress-arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+          <button class="progress-btn" id="progressBtn">Click to View Progress</button>
+          <svg class="progress-arrow progress-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+        
+        <!-- Skills Progress Bars (Hidden by default, shown in modal) -->
+        <div class="skills-progress-container" id="skillsProgressContainer" style="display: none;">
+          <div class="skills-progress">
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">HTML</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="75">
+                  <span class="skill-percentage">75%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">CSS</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="78">
+                  <span class="skill-percentage">78%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">JavaScript</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="75">
+                  <span class="skill-percentage">75%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">C#</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="60">
+                  <span class="skill-percentage">60%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">React</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="65">
+                  <span class="skill-percentage">65%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">Node.js</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="45">
+                  <span class="skill-percentage">45%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">Next.js</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="45">
+                  <span class="skill-percentage">45%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">Express</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="40">
+                  <span class="skill-percentage">40%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">Tailwind</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="50">
+                  <span class="skill-percentage">50%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">Firebase</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="70">
+                  <span class="skill-percentage">70%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">Supabase</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="50">
+                  <span class="skill-percentage">50%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-progress-item">
+              <div class="skill-progress-header">
+                <span class="skill-name">SQL</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-percentage="60">
+                  <span class="skill-percentage">60%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+    
+    <!-- Skills Progress Modal -->
+    <div class="progress-modal" id="progressModal">
+      <div class="progress-modal-content">
+        <span class="progress-modal-close">&times;</span>
+        <h2 class="progress-modal-title">Technical Skills Progress</h2>
+        <div class="skills-progress-modal">
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">HTML</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="75">
+                <span class="skill-percentage">75%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">CSS</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="78">
+                <span class="skill-percentage">78%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">JavaScript</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="75">
+                <span class="skill-percentage">75%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">C#</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="60">
+                <span class="skill-percentage">60%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">React</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="65">
+                <span class="skill-percentage">65%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">Node.js</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="45">
+                <span class="skill-percentage">45%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">Next.js</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="45">
+                <span class="skill-percentage">45%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">Express</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="40">
+                <span class="skill-percentage">40%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">Tailwind</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="50">
+                <span class="skill-percentage">50%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">Firebase</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="70">
+                <span class="skill-percentage">70%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">Supabase</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="50">
+                <span class="skill-percentage">50%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-progress-item">
+            <div class="skill-progress-header">
+              <span class="skill-name">SQL</span>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" data-percentage="60">
+                <span class="skill-percentage">60%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="progress-modal-exit-btn">Close</button>
+      </div>
+    </div>
+    
     <!--------------------- PROJECT SECTION------------------------------->
     <section id="projects">
       <div class="projectxt scroll-animate animate-up"><h1>PROJECTS</h1></div>
