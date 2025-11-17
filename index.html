@@ -342,12 +342,18 @@
     <!-- Skills Progress Modal -->
     <div class="progress-modal" id="progressModal">
       <div class="progress-modal-content">
-        <span class="progress-modal-close">&times;</span>
-        <h2 class="progress-modal-title">Technical Skills Progress</h2>
+        <div class="progress-modal-header">
+          <div class="progress-modal-left-buttons">
+            <button class="progress-modal-add-btn" id="addSkillBtn">+ Add Skill</button>
+          </div>
+          <h2 class="progress-modal-title">Technical Skills Progress</h2>
+          <span class="progress-modal-close">&times;</span>
+        </div>
         <div class="skills-progress-modal">
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">HTML</span>
+              <button class="skill-edit-btn" data-skill="HTML" data-percentage="75">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="75">
@@ -359,6 +365,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">CSS</span>
+              <button class="skill-edit-btn" data-skill="CSS" data-percentage="78">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="78">
@@ -370,6 +377,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">JavaScript</span>
+              <button class="skill-edit-btn" data-skill="JavaScript" data-percentage="75">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="75">
@@ -381,6 +389,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">C#</span>
+              <button class="skill-edit-btn" data-skill="C#" data-percentage="60">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="60">
@@ -392,6 +401,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">React</span>
+              <button class="skill-edit-btn" data-skill="React" data-percentage="65">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="65">
@@ -403,6 +413,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">Node.js</span>
+              <button class="skill-edit-btn" data-skill="Node.js" data-percentage="45">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="45">
@@ -414,6 +425,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">Next.js</span>
+              <button class="skill-edit-btn" data-skill="Next.js" data-percentage="45">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="45">
@@ -425,6 +437,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">Express</span>
+              <button class="skill-edit-btn" data-skill="Express" data-percentage="40">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="40">
@@ -436,6 +449,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">Tailwind</span>
+              <button class="skill-edit-btn" data-skill="Tailwind" data-percentage="50">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="50">
@@ -447,6 +461,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">Firebase</span>
+              <button class="skill-edit-btn" data-skill="Firebase" data-percentage="70">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="70">
@@ -458,6 +473,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">Supabase</span>
+              <button class="skill-edit-btn" data-skill="Supabase" data-percentage="50">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="50">
@@ -469,6 +485,7 @@
           <div class="skill-progress-item">
             <div class="skill-progress-header">
               <span class="skill-name">SQL</span>
+              <button class="skill-edit-btn" data-skill="SQL" data-percentage="60">Edit</button>
             </div>
             <div class="skill-progress-bar">
               <div class="skill-progress-fill" data-percentage="60">
@@ -477,7 +494,45 @@
             </div>
           </div>
         </div>
-        <button class="progress-modal-exit-btn">Close</button>
+        <div class="progress-modal-footer">
+          <button class="progress-modal-exit-btn">Close</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Add/Edit Skill Modal -->
+    <div class="skill-edit-modal" id="skillEditModal">
+      <div class="skill-edit-modal-content">
+        <span class="skill-edit-modal-close">&times;</span>
+        <h3 id="skillEditTitle">Add New Skill</h3>
+        <form id="skillEditForm">
+          <div class="form-group">
+            <label for="skillNameInput">Skill Name:</label>
+            <input type="text" id="skillNameInput" required>
+          </div>
+          <div class="form-group">
+            <label for="skillPercentageInput">Percentage (0-100):</label>
+            <input type="number" id="skillPercentageInput" min="0" max="100" required>
+          </div>
+          <div class="skill-edit-modal-buttons">
+            <button type="button" class="skill-delete-btn" id="skillDeleteBtn">Delete</button>
+            <button type="button" class="skill-cancel-btn" id="skillCancelBtn">Cancel</button>
+            <button type="submit" class="skill-save-btn">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Delete Confirmation Modal -->
+    <div class="delete-confirm-modal" id="deleteConfirmModal">
+      <div class="delete-confirm-modal-content">
+        <span class="delete-confirm-modal-close">&times;</span>
+        <h3 class="delete-confirm-title">Delete Skill</h3>
+        <p class="delete-confirm-message">Are you sure you want to delete this skill? This action cannot be undone.</p>
+        <div class="delete-confirm-buttons">
+          <button type="button" class="delete-confirm-cancel-btn" id="deleteConfirmCancelBtn">Cancel</button>
+          <button type="button" class="delete-confirm-delete-btn" id="deleteConfirmDeleteBtn">Delete</button>
+        </div>
       </div>
     </div>
     

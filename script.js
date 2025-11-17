@@ -354,3 +354,380 @@ function copyPhoneNumber() {
   });
 })();
 
+// Skills Add/Edit Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Functions to prevent/restore body scroll (scoped to this section)
+  function preventBodyScroll() {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+  }
+
+  function restoreBodyScroll() {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+
+  const addSkillBtn = document.getElementById('addSkillBtn');
+  const skillEditModal = document.getElementById('skillEditModal');
+  const skillEditForm = document.getElementById('skillEditForm');
+  const skillEditTitle = document.getElementById('skillEditTitle');
+  const skillNameInput = document.getElementById('skillNameInput');
+  const skillPercentageInput = document.getElementById('skillPercentageInput');
+  const skillCancelBtn = document.getElementById('skillCancelBtn');
+  const skillDeleteBtn = document.getElementById('skillDeleteBtn');
+  const skillEditModalClose = document.querySelector('.skill-edit-modal-close');
+  const skillsProgressModal = document.querySelector('.skills-progress-modal');
+  let currentEditingItem = null;
+  let skillToDelete = null; // Store skill name for deletion
+
+  // Default skills (used if localStorage is empty)
+  const defaultSkills = [
+    { name: 'HTML', percentage: 75 },
+    { name: 'CSS', percentage: 78 },
+    { name: 'JavaScript', percentage: 75 },
+    { name: 'C#', percentage: 60 },
+    { name: 'React', percentage: 65 },
+    { name: 'Node.js', percentage: 45 },
+    { name: 'Next.js', percentage: 45 },
+    { name: 'Express', percentage: 40 },
+    { name: 'Tailwind', percentage: 50 },
+    { name: 'Firebase', percentage: 70 },
+    { name: 'Supabase', percentage: 50 },
+    { name: 'SQL', percentage: 60 }
+  ];
+
+  // Function to get all skills from DOM
+  function getAllSkills() {
+    const skillItems = skillsProgressModal.querySelectorAll('.skill-progress-item');
+    const skills = [];
+    skillItems.forEach(item => {
+      const name = item.querySelector('.skill-name').textContent.trim();
+      const percentage = parseInt(item.querySelector('.skill-progress-fill').getAttribute('data-percentage'));
+      skills.push({ name, percentage });
+    });
+    return skills;
+  }
+
+  // Function to save skills to localStorage
+  function saveSkills() {
+    const skills = getAllSkills();
+    localStorage.setItem('portfolio-skills', JSON.stringify(skills));
+  }
+
+  // Function to load skills from localStorage
+  function loadSkills() {
+    const savedSkills = localStorage.getItem('portfolio-skills');
+    const skills = savedSkills ? JSON.parse(savedSkills) : defaultSkills;
+    
+    // Clear existing skills
+    if (skillsProgressModal) {
+      skillsProgressModal.innerHTML = '';
+    }
+    
+    // Render skills
+    skills.forEach(skill => {
+      const skillItem = document.createElement('div');
+      skillItem.className = 'skill-progress-item';
+      skillItem.innerHTML = `
+        <div class="skill-progress-header">
+          <span class="skill-name">${skill.name}</span>
+          <button class="skill-edit-btn" data-skill="${skill.name}" data-percentage="${skill.percentage}">Edit</button>
+        </div>
+        <div class="skill-progress-bar">
+          <div class="skill-progress-fill" data-percentage="${skill.percentage}" style="width: 0%;">
+            <span class="skill-percentage">${skill.percentage}%</span>
+          </div>
+        </div>
+      `;
+      
+      if (skillsProgressModal) {
+        skillsProgressModal.appendChild(skillItem);
+      }
+    });
+  }
+
+  // Load skills on page load
+  loadSkills();
+  
+  // Save default skills to localStorage if it's the first time
+  if (!localStorage.getItem('portfolio-skills')) {
+    saveSkills();
+  }
+
+  // Open add skill modal
+  if (addSkillBtn) {
+    addSkillBtn.addEventListener('click', function() {
+      currentEditingItem = null;
+      skillEditTitle.textContent = 'Add New Skill';
+      skillNameInput.value = '';
+      skillPercentageInput.value = '';
+      skillEditModal.style.display = 'flex';
+      if (skillDeleteBtn) {
+        skillDeleteBtn.style.display = 'none'; // Hide delete button when adding
+      }
+      preventBodyScroll();
+    });
+  }
+
+  // Open edit skill modal
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('skill-edit-btn')) {
+      const btn = e.target;
+      const skillName = btn.getAttribute('data-skill');
+      const skillPercentage = btn.getAttribute('data-percentage');
+      currentEditingItem = btn.closest('.skill-progress-item');
+      
+      skillEditTitle.textContent = 'Edit Skill';
+      skillNameInput.value = skillName;
+      skillPercentageInput.value = skillPercentage;
+      skillEditModal.style.display = 'flex';
+      if (skillDeleteBtn) {
+        skillDeleteBtn.style.display = 'block'; // Show delete button when editing
+      }
+      preventBodyScroll();
+    }
+  });
+
+  // Close edit modal
+  function closeSkillEditModal() {
+    skillEditModal.style.display = 'none';
+    restoreBodyScroll();
+    currentEditingItem = null;
+  }
+
+  if (skillEditModalClose) {
+    skillEditModalClose.addEventListener('click', closeSkillEditModal);
+  }
+
+  if (skillCancelBtn) {
+    skillCancelBtn.addEventListener('click', closeSkillEditModal);
+  }
+
+  // Delete Confirmation Modal
+  const deleteConfirmModal = document.getElementById('deleteConfirmModal');
+  const deleteConfirmCancelBtn = document.getElementById('deleteConfirmCancelBtn');
+  const deleteConfirmDeleteBtn = document.getElementById('deleteConfirmDeleteBtn');
+  const deleteConfirmModalClose = document.querySelector('.delete-confirm-modal-close');
+  
+  // Debug: Check if modal elements exist
+  console.log('deleteConfirmModal:', deleteConfirmModal);
+  console.log('deleteConfirmDeleteBtn:', deleteConfirmDeleteBtn);
+
+  // Function to close delete confirmation modal
+  function closeDeleteConfirmModal() {
+    if (deleteConfirmModal) {
+      deleteConfirmModal.style.display = 'none';
+      restoreBodyScroll();
+      skillToDelete = null; // Clear reference when modal is closed
+    }
+  }
+
+  // Handle delete button - open confirmation modal
+  // Use event delegation to catch clicks on the delete button
+  if (skillDeleteBtn) {
+    skillDeleteBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      console.log('Delete button clicked');
+      
+      // Get skill name from the input field (more reliable)
+      const skillName = skillNameInput.value.trim();
+      console.log('Skill name from input:', skillName);
+      
+      if (skillName) {
+        skillToDelete = skillName;
+        console.log('Stored skillToDelete:', skillToDelete);
+        // Close edit modal first
+        skillEditModal.style.display = 'none';
+        restoreBodyScroll();
+        // Open delete confirmation modal
+        if (deleteConfirmModal) {
+          deleteConfirmModal.style.display = 'flex';
+          preventBodyScroll();
+          console.log('Delete confirmation modal opened');
+        } else {
+          console.error('deleteConfirmModal not found!');
+        }
+      } else if (currentEditingItem) {
+        // Fallback: Get skill name from the current editing item
+        const skillNameSpan = currentEditingItem.querySelector('.skill-name');
+        if (skillNameSpan) {
+          skillToDelete = skillNameSpan.textContent.trim();
+          console.log('Stored skillToDelete (from DOM):', skillToDelete);
+          // Close edit modal first
+          skillEditModal.style.display = 'none';
+          restoreBodyScroll();
+          // Open delete confirmation modal
+          if (deleteConfirmModal) {
+            deleteConfirmModal.style.display = 'flex';
+            preventBodyScroll();
+            console.log('Delete confirmation modal opened');
+          } else {
+            console.error('deleteConfirmModal not found!');
+          }
+        }
+      } else {
+        console.error('No skill name found and no currentEditingItem');
+      }
+    });
+  } else {
+    console.error('skillDeleteBtn not found!');
+  }
+
+  // Handle delete confirmation
+  if (deleteConfirmDeleteBtn) {
+    deleteConfirmDeleteBtn.addEventListener('click', function() {
+      console.log('Delete confirmed, skillToDelete:', skillToDelete);
+      
+      if (skillToDelete && skillsProgressModal) {
+        // Find the skill item by name
+        const skillItems = skillsProgressModal.querySelectorAll('.skill-progress-item');
+        console.log('Total skill items found:', skillItems.length);
+        
+        let found = false;
+        skillItems.forEach(item => {
+          const skillNameSpan = item.querySelector('.skill-name');
+          if (skillNameSpan) {
+            const itemName = skillNameSpan.textContent.trim();
+            console.log('Comparing:', itemName, '===', skillToDelete, '?', itemName === skillToDelete);
+            if (itemName === skillToDelete) {
+              item.remove();
+              found = true;
+              console.log('Skill removed successfully');
+            }
+          }
+        });
+        
+        if (found) {
+          saveSkills(); // Save to localStorage after deletion
+          closeDeleteConfirmModal();
+          skillToDelete = null;
+          currentEditingItem = null;
+        } else {
+          console.error('Skill not found for deletion:', skillToDelete);
+          console.log('Available skills:', Array.from(skillItems).map(item => {
+            const span = item.querySelector('.skill-name');
+            return span ? span.textContent.trim() : 'N/A';
+          }));
+          alert('Error: Could not find skill to delete. Please try again.');
+          closeDeleteConfirmModal();
+        }
+      } else {
+        console.error('Missing skillToDelete or skillsProgressModal');
+        console.log('skillToDelete:', skillToDelete);
+        console.log('skillsProgressModal:', skillsProgressModal);
+      }
+    });
+  }
+
+  // Close delete confirmation modal
+  if (deleteConfirmCancelBtn) {
+    deleteConfirmCancelBtn.addEventListener('click', closeDeleteConfirmModal);
+  }
+
+  if (deleteConfirmModalClose) {
+    deleteConfirmModalClose.addEventListener('click', closeDeleteConfirmModal);
+  }
+
+  // Close delete modal when clicking outside
+  if (deleteConfirmModal) {
+    deleteConfirmModal.addEventListener('click', function(e) {
+      if (e.target === deleteConfirmModal) {
+        closeDeleteConfirmModal();
+      }
+    });
+  }
+
+  // Close delete modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && deleteConfirmModal && deleteConfirmModal.style.display === 'flex') {
+      closeDeleteConfirmModal();
+    }
+  });
+
+  // Close modal when clicking outside
+  if (skillEditModal) {
+    skillEditModal.addEventListener('click', function(e) {
+      if (e.target === skillEditModal) {
+        closeSkillEditModal();
+      }
+    });
+  }
+
+  // Handle form submission
+  if (skillEditForm) {
+    skillEditForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const skillName = skillNameInput.value.trim();
+      const skillPercentage = parseInt(skillPercentageInput.value);
+      
+      if (!skillName || isNaN(skillPercentage) || skillPercentage < 0 || skillPercentage > 100) {
+        alert('Please enter a valid skill name and percentage (0-100)');
+        return;
+      }
+
+      if (currentEditingItem) {
+        // Edit existing skill
+        const skillNameSpan = currentEditingItem.querySelector('.skill-name');
+        const progressFill = currentEditingItem.querySelector('.skill-progress-fill');
+        const percentageSpan = currentEditingItem.querySelector('.skill-percentage');
+        const editBtn = currentEditingItem.querySelector('.skill-edit-btn');
+        
+        skillNameSpan.textContent = skillName;
+        progressFill.setAttribute('data-percentage', skillPercentage);
+        progressFill.style.width = '0%';
+        percentageSpan.textContent = skillPercentage + '%';
+        editBtn.setAttribute('data-skill', skillName);
+        editBtn.setAttribute('data-percentage', skillPercentage);
+        
+        // Animate the progress bar
+        setTimeout(() => {
+          progressFill.style.width = skillPercentage + '%';
+        }, 100);
+        
+        // Save to localStorage
+        saveSkills();
+      } else {
+        // Add new skill
+        const newSkillItem = document.createElement('div');
+        newSkillItem.className = 'skill-progress-item';
+        newSkillItem.innerHTML = `
+          <div class="skill-progress-header">
+            <span class="skill-name">${skillName}</span>
+            <button class="skill-edit-btn" data-skill="${skillName}" data-percentage="${skillPercentage}">Edit</button>
+          </div>
+          <div class="skill-progress-bar">
+            <div class="skill-progress-fill" data-percentage="${skillPercentage}">
+              <span class="skill-percentage">${skillPercentage}%</span>
+            </div>
+          </div>
+        `;
+        
+        if (skillsProgressModal) {
+          skillsProgressModal.appendChild(newSkillItem);
+          
+          // Animate the new progress bar
+          const newProgressFill = newSkillItem.querySelector('.skill-progress-fill');
+          setTimeout(() => {
+            newProgressFill.style.width = skillPercentage + '%';
+          }, 100);
+        }
+        
+        // Save to localStorage
+        saveSkills();
+      }
+      
+      closeSkillEditModal();
+    });
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && skillEditModal && skillEditModal.style.display === 'flex') {
+      closeSkillEditModal();
+    }
+  });
+});
+
